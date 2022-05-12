@@ -1,0 +1,3 @@
+function :wq
+    exit
+end
