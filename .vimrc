@@ -14,6 +14,7 @@
     Plug 'udalov/kotlin-vim'
     Plug 'maksimr/vim-jsbeautify'
     Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+    Plug 'vim-syntastic/syntastic'
 
     " TODO: Follow this tutorial or something 
     " https://rudism.com/coding-csharp-in-neovim/ 
@@ -75,6 +76,18 @@
     set wildmode=list:longest
     set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-    " Omnisharp setup
+    " Syntastic setup
+    "
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticSTatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 1
+    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 " }}}
 
