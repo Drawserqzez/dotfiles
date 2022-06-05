@@ -15,6 +15,10 @@
     Plug 'maksimr/vim-jsbeautify'
     Plug 'catppuccin/nvim', {'as': 'catppuccin'}
     Plug 'vim-syntastic/syntastic'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+    Plug 'prabirshrestha/asyncomplete.vim'
+
+    " Omnisharp
 
     " TODO: Follow this tutorial or something 
     " https://rudism.com/coding-csharp-in-neovim/ 
@@ -24,7 +28,7 @@
 " }}}
 
 
-" MAPPINGS ------------------------------------------------------------------------------- {{{
+": MAPPINGS {{{
     nnoremap ö ^
     nnoremap ä $
     vnoremap ö ^
@@ -44,6 +48,21 @@
     nnoremap gn :NERDTreeFocus<CR>
 
     nnoremap gx :call JsonBeautify()<CR>
+
+" }}}
+
+" asyncomplete mappings {{{ 
+    " tab completion
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+    " force refresh preview
+    imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+    
+    " autoclose preview window on completion
+    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 " }}}
 
 " SETTINGS ----------------------------------------------------------------------------------------------------- {{{
@@ -79,7 +98,7 @@
     " Syntastic setup
     "
     set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticSTatuslineFlag()}
+    set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
 
     let g:syntastic_always_populate_loc_list = 1
@@ -89,5 +108,12 @@
     let g:syntastic_check_on_wq = 1
     let g:syntastic_javascript_checkers = ['eslint']
     let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+" }}}
+"
+" Omnisharp settings {{{
+    autocmd FileType cs nmap <silent> <buffer> gr <Plug>(omnisharp_rename)
+    autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+    autocmd FileType cs nmap <silent> <buffer> gh <Plug>(omnisharp_documentation)
+
 " }}}
 
