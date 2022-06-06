@@ -41,6 +41,8 @@
     nnoremap L 10l
 
     nnoremap gs <C-w>
+    nnoremap + <C-w>+
+    nnoremap - <C-w>-
 
     inoremap jkl <Esc>
     tnoremap jkl <C-\><C-n>
