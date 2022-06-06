@@ -17,6 +17,7 @@
     Plug 'vim-syntastic/syntastic'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
     Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
 
     " Omnisharp
 
@@ -48,6 +49,7 @@
     nnoremap gn :NERDTreeFocus<CR>
 
     nnoremap gx :call JsonBeautify()<CR>
+    nnoremap gfz :FZF<CR>
 
 " }}}
 
