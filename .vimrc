@@ -99,6 +99,10 @@
     set wildmode=list:longest
     set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+    " airline settings
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#enabled = 1
+
     " Syntastic setup
     "
     set statusline+=%#warningmsg#
