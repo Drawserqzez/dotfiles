@@ -18,6 +18,8 @@
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
+    Plug 'posva/vim-vue'
+    Plug 'mattn/emmet-vim'
 
     " Omnisharp
 
