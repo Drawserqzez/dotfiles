@@ -1,25 +1,15 @@
 " PLUGIN ------------ {{{
     call plug#begin('~/.vim/plugged')
 
-    Plug 'dense-analysis/ale'
     Plug 'cocopon/iceberg.vim'
     Plug 'preservim/nerdtree'
-    Plug 'OmniSharp/omnisharp-vim'
-    Plug 'razzmatazz/csharp-language-server'
     Plug 'ryanoasis/vim-devicons'
     Plug 'vim-airline/vim-airline'
-    Plug 'jlcrochet/vim-razor'
-    Plug 'OrangeT/vim-csharp'
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'udalov/kotlin-vim'
     Plug 'maksimr/vim-jsbeautify'
-    Plug 'catppuccin/nvim', {'as': 'catppuccin'}
-    Plug 'vim-syntastic/syntastic'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-    Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
-    Plug 'posva/vim-vue'
     Plug 'mattn/emmet-vim'
+    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    Plug 'sheerun/vim-polyglot'
 
     " Omnisharp
 
@@ -56,26 +46,63 @@
     nnoremap gfz :FZF<CR>
 
 " }}}
+"
+" coc.nvim mappings {{{
+    inoremap <silent><expr> <TAB>
+                \ coc#pum#visible() ? coc#pum#next(1) : 
+                \ CheckBackspace() ? "\<Tab>" : 
+                \ coc#refresh()
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+    function! CheckBackspace() abort 
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1] =~# '\s'
+    endfunction
+
+    if has('nvim')
+        inoremap <silent><expr> <c-space> coc#refresh()
+    endif
+
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> grf <Plug>(coc-references)
+    nmap <leader>rn <Plug>(coc-rename)
+
+    "nmap <silent> gh :call ShowDocumentation()<CR>
+
+    "function! ShowDocumentation()
+    "    if CocAction('hasProvider', 'hover')
+    "        call CocActionAsync('doHover')
+    "    else 
+    "        call feedkeys('K', 'in')
+    "    endif 
+    "endfunction
+
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+" }}}
 
 " asyncomplete mappings {{{ 
     " tab completion
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+    "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    "inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
     " force refresh preview
-    imap <c-space> <Plug>(asyncomplete_force_refresh)
+    "imap <c-space> <Plug>(asyncomplete_force_refresh)
 
     
     " autoclose preview window on completion
-    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+    "autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 " }}}
 
 " SETTINGS ----------------------------------------------------------------------------------------------------- {{{
 
 "    autocmd VimEnter * NERDTree | wincmd p
 "    set background=dark
-    colorscheme catppuccin
+    colorscheme iceberg
     set tabstop=4
     set shiftwidth=4
     set expandtab
@@ -107,23 +134,23 @@
 
     " Syntastic setup
     "
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+    "set statusline+=%#warningmsg#
+    "set statusline+=%{SyntasticStatuslineFlag()}
+    "set statusline+=%*
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 1
-    let g:syntastic_javascript_checkers = ['eslint']
-    let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+    "let g:syntastic_always_populate_loc_list = 1
+    "let g:syntastic_auto_loc_list = 1
+    "let g:syntastic_auto_loc_list = 1
+    "let g:syntastic_check_on_open = 1
+    "let g:syntastic_check_on_wq = 1
+    "let g:syntastic_javascript_checkers = ['eslint']
+    "let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 " }}}
 "
 " Omnisharp settings {{{
-    autocmd FileType cs nmap <silent> <buffer> gr <Plug>(omnisharp_rename)
-    autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
-    autocmd FileType cs nmap <silent> <buffer> gh <Plug>(omnisharp_documentation)
+    "autocmd FileType cs nmap <silent> <buffer> gr <Plug>(omnisharp_rename)
+    "autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+    "autocmd FileType cs nmap <silent> <buffer> gh <Plug>(omnisharp_documentation)
 
 " }}}
 
