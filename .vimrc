@@ -69,7 +69,7 @@
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> grf <Plug>(coc-references)
-    nmap <leader>rn <Plug>(coc-rename)
+    nmap <silent> grn <Plug>(coc-rename)
 
     "nmap <silent> gh :call ShowDocumentation()<CR>
 
