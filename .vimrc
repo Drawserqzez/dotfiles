@@ -18,6 +18,7 @@
     " Vim is very cool I like it a lot :)
 
     call plug#end()
+
 " }}}
 
 
@@ -47,6 +48,9 @@
 
 " }}}
 "
+    nnoremap trm :sp<CR> <C-w>j :ter<CR>
+    nnoremap vtrm :vsp<CR> <C-w>l :ter<CR>
+
 " coc.nvim mappings {{{
     inoremap <silent><expr> <TAB>
                 \ coc#pum#visible() ? coc#pum#next(1) : 
