@@ -2,7 +2,6 @@
 !.dotfiles/README.md
 
 .config/fish/conf.d/omf.fish
-.config/fish/config.fish
 .config/fish/fish_variables
 .config/fish/functions/fish_prompt.fish
 .config/omf/bundle
