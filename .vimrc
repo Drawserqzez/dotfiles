@@ -115,6 +115,10 @@
     set number
     set cursorline
 
+    " sane splits
+    set splitbelow
+    set splitright
+
     set nobackup
     set scrolloff=10
     set nowrap
