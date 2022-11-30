@@ -32,6 +32,8 @@
     nnoremap H 10h
     nnoremap L 10l
 
+    nnoremap gp :sp<CR>
+    nnoremap gv :vsp<CR>
     nnoremap gs <C-w>
     nnoremap + <C-w>+
     nnoremap - <C-w>-
@@ -118,6 +120,8 @@
     " sane splits
     set splitbelow
     set splitright
+
+    set relativenumber
 
     set nobackup
     set scrolloff=10
