@@ -11,6 +11,7 @@
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     Plug 'sheerun/vim-polyglot'
     Plug 'rebelot/kanagawa.nvim'
+    Plug 'nvim-tree/nvim-web-devicons'
 
     call plug#end()
 
@@ -58,6 +59,12 @@
                 \ CheckBackspace() ? "\<Tab>" : 
                 \ coc#refresh()
     inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+    inoremap <silent><expr> <C-n>
+                \ coc#pum#visible() ? coc#pum#next(1) : 
+                \ CheckBackspace() ? "\<C-n>" : 
+                \ coc#refresh()
+    inoremap <expr><C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
     inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
