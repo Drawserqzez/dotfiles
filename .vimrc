@@ -54,6 +54,10 @@
     nnoremap vtrm :vsp<CR> <C-w>l :ter<CR>
 
 " coc.nvim mappings {{{
+"
+    " We wanna refresh lsp often
+    set updatetime=300
+
     inoremap <silent><expr> <TAB>
                 \ coc#pum#visible() ? coc#pum#next(1) : 
                 \ CheckBackspace() ? "\<Tab>" : 
@@ -124,8 +128,6 @@
     " sane splits
     set splitbelow
     set splitright
-
-    set relativenumber
 
     set nobackup
     set scrolloff=10
