@@ -3,8 +3,7 @@ if status is-interactive
 end
 
 # Nvm is cool
-nvm use lts
-clear
+nvm use lts -s
 
 # add rust directory to path
 fish_add_path ~/.cargo/bin/
