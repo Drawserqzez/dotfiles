@@ -1,39 +1,40 @@
 vim.g.mapleader = " "
+local map = vim.keymap.set
 
-vim.keymap.set('i', 'jkl', '<Esc>', { noremap = true })
+map('i', 'jkl', '<Esc>', { noremap = true })
 
-vim.keymap.set('n', 'ö', '^', { noremap = true })
-vim.keymap.set('v', 'ö', '^', { noremap = true })
-vim.keymap.set('n', 'ä', '$', { noremap = true })
-vim.keymap.set('v', 'ä', '$', { noremap = true })
+map('n', 'ö', '^', { noremap = true })
+map('v', 'ö', '^', { noremap = true })
+map('n', 'ä', '$', { noremap = true })
+map('v', 'ä', '$', { noremap = true })
 
-vim.keymap.set('n', 'J', '5j', { noremap = true })
-vim.keymap.set('n', 'K', '5k', { noremap = true })
-vim.keymap.set('n', 'H', '10h', { noremap = true })
-vim.keymap.set('n', 'L', '10l', { noremap = true })
+map('n', 'J', '5j', { noremap = true })
+map('n', 'K', '5k', { noremap = true })
+map('n', 'H', '10h', { noremap = true })
+map('n', 'L', '10l', { noremap = true })
 
-vim.keymap.set('n', '<leader>s', vim.cmd.sp)
-vim.keymap.set('n', '<leader>v', vim.cmd.vsp)
+map('n', '<leader>s', vim.cmd.sp)
+map('n', '<leader>v', vim.cmd.vsp)
 
-vim.keymap.set('n', 'gs', '<C-w>', { noremap = true })
-vim.keymap.set('n', '+', '<C-w>+')
-vim.keymap.set('n', '-', '<C-w>-')
+map('n', 'gs', '<C-w>', { noremap = true })
+map('n', '+', '<C-w>+')
+map('n', '-', '<C-w>-')
 
-vim.keymap.set('t', 'jkl', '<C-\\><C-n>')
+map('t', 'jkl', '<C-\\><C-n>')
 
 -- magic vim-fu thanks to theprimeagen
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- greatest remap ever
-vim.keymap.set('x', '<leader>p', "\"_dP")
+map('x', '<leader>p', "\"_dP")
 
 -- courtesey of asbjornHaland
-vim.keymap.set('n', '<leader>y', "\"+y")
-vim.keymap.set('v', '<leader>y', "\"+y")
-vim.keymap.set('n', '<leader>Y', "\"+Y")
+map('n', '<leader>y', "\"+y")
+map('v', '<leader>y', "\"+y")
+map('n', '<leader>Y', "\"+Y")
 
-vim.keymap.set('n', 'Q', '<nop>')
-vim.keymap.set('n', '<leader>b', function()
+map('n', 'Q', '<nop>')
+map('n', '<leader>b', function()
     vim.lsp.buf.format()
 end)
