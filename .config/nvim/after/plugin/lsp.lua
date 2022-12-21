@@ -30,7 +30,10 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', 'grn', function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set('n', 'grf', function() vim.lsp.buf.references() end, opts)
   vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set('n', '<leader>h', function() vim.diagnostic.open_float() end, opts)
 end)
 
+-- enables lsp support for nvim config
+lsp.nvim_workspace()
 
 lsp.setup()
