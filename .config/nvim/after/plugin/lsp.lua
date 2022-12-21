@@ -9,6 +9,11 @@ lsp.ensure_installed({
   'rust_analyzer'
 })
 
+-- Some of the default keymaps conflict with mine (=
+lsp.set_preferences({
+    set_lsp_keymaps = false
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -26,6 +31,7 @@ lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
   vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
   vim.keymap.set('n', 'gh', function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set('n', 'grn', function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set('n', 'grf', function() vim.lsp.buf.references() end, opts)

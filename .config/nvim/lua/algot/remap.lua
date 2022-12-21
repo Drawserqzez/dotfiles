@@ -1,21 +1,21 @@
 vim.g.mapleader = " "
 
-vim.keymap.set('i', 'jkl', '<Esc>')
+vim.keymap.set('i', 'jkl', '<Esc>', { noremap = true })
 
-vim.keymap.set('n', 'ö', '^')
-vim.keymap.set('v', 'ö', '^')
-vim.keymap.set('n', 'ä', '$')
-vim.keymap.set('v', 'ä', '$')
+vim.keymap.set('n', 'ö', '^', { noremap = true })
+vim.keymap.set('v', 'ö', '^', { noremap = true })
+vim.keymap.set('n', 'ä', '$', { noremap = true })
+vim.keymap.set('v', 'ä', '$', { noremap = true })
 
-vim.keymap.set('n', 'J', '5j')
-vim.keymap.set('n', 'K', '5k')
-vim.keymap.set('n', 'H', '10h')
-vim.keymap.set('n', 'L', '10l')
+vim.keymap.set('n', 'J', '5j', { noremap = true })
+vim.keymap.set('n', 'K', '5k', { noremap = true })
+vim.keymap.set('n', 'H', '10h', { noremap = true })
+vim.keymap.set('n', 'L', '10l', { noremap = true })
 
 vim.keymap.set('n', '<leader>s', vim.cmd.sp)
 vim.keymap.set('n', '<leader>v', vim.cmd.vsp)
 
-vim.keymap.set('n', 'gs', '<C-w>')
+vim.keymap.set('n', 'gs', '<C-w>', { noremap = true })
 vim.keymap.set('n', '+', '<C-w>+')
 vim.keymap.set('n', '-', '<C-w>-')
 

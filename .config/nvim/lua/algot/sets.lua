@@ -11,6 +11,7 @@ vim.opt.splitright = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+vim.opt.signcolumn = 'yes'
 
 vim.opt.swapfile = false
 vim.opt.backup = false
