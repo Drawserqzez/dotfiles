@@ -5,8 +5,7 @@ lsp.preset('recommended')
 lsp.ensure_installed({
     'tsserver',
     'eslint',
-    'sumneko_lua',
-    'rust_analyzer'
+    'rust_analyzer',
 })
 
 -- Some of the default keymaps conflict with mine (=
@@ -33,6 +32,7 @@ lsp.on_attach(function(client, bufnr)
 
     map('n', 'gd', function() vim.lsp.buf.definition() end, opts)
     map('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
+    map('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
     map('n', 'gh', function() vim.lsp.buf.hover() end, opts)
     map('n', 'grn', function() vim.lsp.buf.rename() end, opts)
     map('n', 'grf', function() vim.lsp.buf.references() end, opts)
