@@ -68,4 +68,14 @@ return require('packer').startup(function(use)
     use {
         'goolord/alpha-nvim',
     }
+
+    use {
+        'folke/trouble.nvim',
+        requires = 'nvim-tree/nvim-web-devicons'
+    }
+
+    use {
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim'
+    }
 end)
