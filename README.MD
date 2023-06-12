@@ -5,6 +5,6 @@ in scope, but it's a lot of fun!
 
 Another fun fact is that this repo is a bare one, which is kinda cool :D
 
-## Upcomfing
+## Installation
 
-For my next project I wanna check out tmux.
+` curl https://raw.githubusercontent.com/Drawserqzez/dotfiles/main/install.fish -sSf | fish `
