@@ -5,7 +5,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim' -- todo: auto-clone packer if not present
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -52,13 +52,9 @@ return require('packer').startup(function(use)
         }
     }
 
-    --use {
-        --'nvim-tree/nvim-tree.lua',
-        --requires = {
-            --'nvim-tree/nvim-web-devicons',
-        --},
-        --tag = 'nightly'
-    --}
+    use {
+        'rmagatti/goto-preview'
+    }
 
     use {
         'akinsho/bufferline.nvim',
