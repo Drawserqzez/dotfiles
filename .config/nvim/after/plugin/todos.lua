@@ -1,7 +1,7 @@
 local todo = require('todo-comments')
 todo.setup{
     keywords = {
-        TODO = {
+        TODO = { -- todo: add more keywords, like e.g. fixme
             alt = { "todo" }
         }
     }
