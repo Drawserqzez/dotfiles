@@ -17,13 +17,6 @@ return require('packer').startup(function(use)
         requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
 
-    use({
-        'rebelot/kanagawa.nvim',
-        config = function()
-            vim.cmd('colorscheme kanagawa')
-        end
-    })
-
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
@@ -80,4 +73,6 @@ return require('packer').startup(function(use)
         'folke/todo-comments.nvim',
         requires = 'nvim-lua/plenary.nvim'
     }
+
+    use('rebelot/kanagawa.nvim')
 end)
