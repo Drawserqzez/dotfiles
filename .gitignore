@@ -7,3 +7,5 @@
 .config/omf/bundle
 .config/omf/channel
 .config/omf/theme
+
+.config/nvim/plugin/packer_compiled.lua
