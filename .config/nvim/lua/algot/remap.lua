@@ -38,3 +38,9 @@ map('n', 'Q', '<nop>')
 map('n', '<leader>b', function()
     vim.lsp.buf.format()
 end)
+
+map('n', '<leader>l', ':noh<CR>')
+
+map('n', '<leader>cfg', ':e $MYVIMRC<CR>')
+map('n', '<leader>cfr', ':source $MYVIMRC <CR>')
+
