@@ -2,7 +2,6 @@ local kanagawa = require('kanagawa')
 
 
 kanagawa.setup({
-    transparent = true,
     dimInactive = false,
     terminalColours = true,
     colors = {
