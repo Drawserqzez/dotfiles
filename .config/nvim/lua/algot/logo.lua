@@ -1,0 +1,36 @@
+function get_logo()
+    local logo = {
+        "MMMMMMMMMMMMMMMMWKkdc;'..          ..';cdOKWMMMMMMMMMMMMMMMM",
+        "MMMMMMMMMMMMWXkl,.          ....          .,lkXWMMMMMMMMMMMM",
+        "MMMMMMMMMMNkc.     ..;coxkO000000Okxoc;..     .ckNMMMMMMMMMM",
+        "MMMMMMMWKo'     'cd0XWMMMMMMMMMMMMMMMMWX0xc'     'oKWMMMMMMM",
+        "MMMMMMXo.    .ckXWMMMMMMMMMMMMMMMMMMMMMMMMMXkc.    .oXMMMMMM",
+        "MMMMNk'    'dXWMMMMMMMMMMMMMMMMMMMMWNX0OkxxxkOxc.    'kNMMMM",
+        "MMMXl.   .dXMMMMMMMMMMMMMMMMMMMMNOd:,..       ...     .lXMMM",
+        "MMK:    :0WMMMMMMMMMMMMMMMMMW0xl'       .....           :KMM",
+        "MK;   .lXMMMMMMMMMMMMMMMMMW0c.     .;lxO0KKK0Odl,.       ;KM",
+        "Nc   .oNMMMMMMMMMMMMMMMMMNo.    .;xKWMMMMMMMMMMMWKd,      cN",
+        "x.   cXMMMMMMMMMMMMMMMMMXc    .,kWMMMMMMMMMMMMMMMMMNd.    .x",
+        ";   'OMMMMMMMMMMMMMMMMMNl    cOXMMMMMMMMMMMMMMMMMMMMW0;    ;",
+        ".   cNMMMMMMMMMMMMMMMMMk.   :XMMMMMMMMMMMMMMMMMMMMMMMM0'   .",
+        "   .dWMMMMMMMMMMMMMMMMNl   .kMMMMMMMMMMMMMMMMMMMMMMMMMWo    ",
+        "   .kMMMMMMMMMMMMMMMMMX:   '0MMMMMMMMMMMMMMMMMMMMMMMMMMk.   ",
+        "   .xMMMMMMMMMMMMMMMMMN:   'OMMMMMMMMMMMMMMMMMMMMMMMMMMx.   ",
+        "    oWMMMMMMMMMMMMMMMMWd    oWMMMMMMMMMMMMMMMMMMMMMMMMX:    ",
+        ".   ;XMMMMMMMMMMMMMMMMMK,   .kWWMMMMMMMMMMMMMMMMMMMMMNd.   .",
+        "l   .dWMMMMMMMMMMMMMMMMWk.   .:xNMMMMMMMMMMMMMMMMMMMXl.    l",
+        "0'   'OMMMMMMMMMMMMMMMMMWO'     ;kNMMMMMMMMMMMMMMMXx,     ,0",
+        "Wx.   ,0MMMMMMMMMMMMMMMMMWKc.     ,oOXWWMMMMMWNKkc'      .kW",
+        "MWd.   'kWMMMMMMMMMMMMMMMMMWOc,.     .,:clllc;'.        .xWM",
+        "MMWx.   .lXMMMMMMMMMMMMMMMMMMWNKd:.                    .xWMM",
+        "MMMW0;    'dXMMMMMMMMMMMMMMMMMMMMWX0xlc;,,,,;:c:'     ;0WMMM",
+        "MMMMMXd.    'o0WMMMMMMMMMMMMMMMMMMMMMMMMWWWWN0o'    .dXMMMMM",
+        "MMMMMMWKo.    .;d0NMMMMMMMMMMMMMMMMMMMMMMN0d;.    .oKMMMMMMM",
+        "MMMMMMMMMXd;.    .'cok0XNWMMMMMMMMWNX0koc'.    .;dXMMMMMMMMM",
+        "MMMMMMMMMMMN0o;.      ..';::cccc::;'..      .;o0NMMMMMMMMMMM",
+        "MMMMMMMMMMMMMMWKkl;..                  ..;lkKWMMMMMMMMMMMMMM",
+        "MMMMMMMMMMMMMMMMMMWKko:'..        ..':okKWMMMMMMMMMMMMMMMMMM",
+    }
+
+    return logo
+end
