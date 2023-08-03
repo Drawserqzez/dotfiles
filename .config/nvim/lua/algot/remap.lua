@@ -41,7 +41,6 @@ end)
 
 map('n', '<leader>l', ':noh<CR>')
 
-map('n', '<leader>cfg', ':e $MYVIMRC<CR>')
-map('n', '<leader>cfr', ':source $MYVIMRC <CR>')
 map('n', '<leader>cwd', ':cd %:h <CR>')
+map('n', '<leader>cfr', ':source $MYVIMRC <CR>')
 
