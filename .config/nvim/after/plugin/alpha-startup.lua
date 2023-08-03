@@ -23,8 +23,8 @@ dash.section.header.opts.hl = pick_colour()
 dash.section.buttons.val = {
     dash.button("<leader>   n", " File Explorer"),
     dash.button("<leader>  ff", "󰥨 File Finder"),
-    dash.button("<leader> cfg", " Edit Config"),
-    dash.button("<leader> cfr", "󱑟 Reload Config"),
+    dash.button("c", " Edit Config", ':e $MYVIMRC <CR>'),
+    dash.button("r", "󱑟 Reload Config", ':source $MYVIMRC'),
     dash.button("u", " Update Packages", ":PackerSync<CR>"),
     dash.button("q", "󰿅 Exit", ":qa<CR>")
 }
