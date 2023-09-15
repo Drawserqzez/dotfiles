@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- todo: auto-clone packer if not present
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+            'nvim-telescope/telescope.nvim', tag = '0.1.3',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
@@ -73,6 +73,4 @@ return require('packer').startup(function(use)
         'folke/todo-comments.nvim',
         requires = 'nvim-lua/plenary.nvim'
     }
-
-    use('rebelot/kanagawa.nvim')
 end)
