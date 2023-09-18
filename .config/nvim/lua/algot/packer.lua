@@ -6,6 +6,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim' -- todo: auto-clone packer if not present
+    
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -75,4 +76,13 @@ return require('packer').startup(function(use)
     }
 
     use('rebelot/kanagawa.nvim')
+
+    use { 
+        "zbirenbaum/copilot.lua", 
+        --cmd = "Copilot",
+        --event = "LspAttach",
+--        config = function()
+--           require("copilot").setup({})
+        --end
+    }
 end)
