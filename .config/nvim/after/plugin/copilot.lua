@@ -3,9 +3,9 @@ local copilot = require('copilot')
 copilot.setup({
     suggestion = {
         enabled = true,
-        auto_trigger = false,
+        auto_trigger = true,
         keymap = {
-            accept = "<Tab>",
+            accept = "<S-Tab>",
             next = "<M-n>",
             prev = "<M-p>",
             dismiss = "<Esc>",
