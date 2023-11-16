@@ -9,12 +9,18 @@ return require('packer').startup(function(use)
     
 
     use {
-            'nvim-telescope/telescope.nvim', tag = '0.1.3',
+        'nvim-telescope/telescope.nvim', 
+        tag = '0.1.3',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     use {
         "nvim-telescope/telescope-file-browser.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    }
+
+    use { 
+        'nvim-telescope/telescope-ui-select.nvim',
         requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
 
@@ -26,6 +32,7 @@ return require('packer').startup(function(use)
     -- lsp config
     use {
         'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -45,6 +52,8 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+
+    use('onsails/lspkind.nvim')
 
     use {
         'rmagatti/goto-preview'
