@@ -1,9 +1,7 @@
-local copilot = require('copilot')
-
-copilot.setup({
+require('copilot').setup({
     suggestion = {
-        enabled = true,
-        auto_trigger = true,
+        enabled = false,
+        auto_trigger = false,
         keymap = {
             accept = "<S-Tab>",
             next = "<M-n>",
@@ -19,7 +17,10 @@ copilot.setup({
         },
         layout = {
             position = "right",
-            ratio = 0.3
+            ratio = 0.4
         }
     }
 })
+
+require('copilot_cmp').setup()
+

@@ -88,15 +88,10 @@ return require('packer').startup(function(use)
 
     use { 
         "zbirenbaum/copilot.lua", 
-        cmd = "Copilot",
-        event = "LspAttach",
---        config = function()
---           require("copilot").setup({})
-        --end
     }
 
     use {
-        'zbirenbaum/copilot-cmp',
-        after = { 'copilot.lua' },
+       'zbirenbaum/copilot-cmp',
+       after = { 'copilot.lua' },
     }
 end)
