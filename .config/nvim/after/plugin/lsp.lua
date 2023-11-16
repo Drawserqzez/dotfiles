@@ -1,33 +1,8 @@
 local lsp = require('lsp-zero')
 
-lsp.preset('recommended')
-
-lsp.ensure_installed({
-    'tsserver',
-    'eslint',
-    'rust_analyzer',
-})
-
--- Some of the default keymaps conflict with mine (=
-lsp.set_preferences({
-    set_lsp_keymaps = false
-})
-
-local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-Space'] = cmp.mapping.complete(),
-})
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
-
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
+
     local map = vim.keymap.set
 
     map('n', 'gd', function() vim.lsp.buf.definition() end, opts)
@@ -38,15 +13,66 @@ lsp.on_attach(function(client, bufnr)
     map('n', 'grf', function() vim.lsp.buf.references() end, opts)
     map('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
     map('n', '<leader>h', function() vim.diagnostic.open_float() end, opts)
+    map('n', 'gl', function() vim.lsp.buf.workspace_symbol() end, opts)
+    map('n', 'gj', function() vim.lsp.buf.code_action() end, opts)
+    map('v', 'gj', function() vim.lsp.buf.code_action() end, opts)
+    map('n', '<leader>b', function() vim.lsp.buf.format() end, opts)
 end)
 
--- enables lsp support for nvim config
-lsp.nvim_workspace()
-
-lsp.setup()
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    ensure_installed = {'rust_analyzer', 'emmet_ls', 'csharp_ls'},
+    handlers = {
+        lsp.default_setup,
+        lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
+        end,
+    }
+})
 
 local lspconfig = require('lspconfig');
 
 lspconfig.emmet_ls.setup({
-    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'vue' }
+    filetypes = { 
+        'html', 
+        'typescriptreact', 
+        'javascriptreact', 
+        'css', 
+        'sass', 
+        'scss', 
+        'less', 
+        'vue',
+    }
 })
+
+local cmp = require('cmp')
+local lspkind = require('lspkind')
+
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+cmp.setup({
+    sources = {
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'luasnip' },
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol_text',
+            maxwidth = 50,
+            ellipsis_char = '...',
+
+            before = function (entry, vim_item)
+                return vim_item
+            end
+        }),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+})
+

@@ -35,9 +35,6 @@ map('v', '<leader>y', "\"+y")
 map('n', '<leader>Y', "\"+Y")
 
 map('n', 'Q', '<nop>')
-map('n', '<leader>b', function()
-    vim.lsp.buf.format()
-end)
 
 map('n', '<leader>l', ':noh<CR>')
 
