@@ -24,6 +24,27 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-Space'] = cmp.mapping.complete(),
 })
 
+--cmp.setup {
+    --sources = {
+        --{ name = 'copilot', group_index = 2 },
+        --{ name = 'nvim_lsp', group_index = 2 },
+        --{ name = 'path', group_index = 2 },
+        --{ name = 'luasnip', group_index = 2 },
+    --},
+    --formatting = {
+        --format = lspkind.cmp_formate({
+            --mode = 'symbol',
+            --max_width = 50,
+            --symbol_map = { 
+                --Copilot = '',
+                --Buffer = '﬘',
+                --Path = '',
+                --Lsp = '',
+            --}, 
+        --})
+    --}
+--}
+
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
