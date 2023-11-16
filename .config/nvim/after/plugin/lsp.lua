@@ -21,11 +21,11 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {'rust_analyzer', 'emmet_ls', 'csharp_ls'},
+    ensure_installed = {'rust_analyzer', 'emmet_ls', 'csharp_ls', 'netcoredbg'},
     handlers = {
         lsp.default_setup,
         lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
+            local lua_opts = lsp.nvim_lua_ls()
             require('lspconfig').lua_ls.setup(lua_opts)
         end,
     }
@@ -34,14 +34,14 @@ require('mason-lspconfig').setup({
 local lspconfig = require('lspconfig');
 
 lspconfig.emmet_ls.setup({
-    filetypes = { 
-        'html', 
-        'typescriptreact', 
-        'javascriptreact', 
-        'css', 
-        'sass', 
-        'scss', 
-        'less', 
+    filetypes = {
+        'html',
+        'typescriptreact',
+        'javascriptreact',
+        'css',
+        'sass',
+        'scss',
+        'less',
         'vue',
     }
 })
