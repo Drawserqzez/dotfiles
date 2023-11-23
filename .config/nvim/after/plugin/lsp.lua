@@ -21,7 +21,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {'rust_analyzer', 'emmet_ls', 'csharp_ls', 'netcoredbg'},
+    ensure_installed = {'rust_analyzer', 'emmet_ls', 'csharp_ls'},
     handlers = {
         lsp.default_setup,
         lua_ls = function()
