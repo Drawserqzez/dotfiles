@@ -24,3 +24,16 @@ require('copilot').setup({
 
 require('copilot_cmp').setup()
 
+local chat = require('CopilotChat')
+chat.setup({
+    window = {
+        layout = 'float',
+        relative = 'cursor',
+        width = 1,
+        height = 0.4,
+        row = 1,
+    },
+})
+
+vim.keymap.set('n', 'gch', function() chat.open() end)
+

@@ -88,8 +88,13 @@ return require('packer').startup(function(use)
 
     use('rebelot/kanagawa.nvim')
 
-    use { 
-        "zbirenbaum/copilot.lua", 
+    use('zbirenbaum/copilot.lua')
+
+    use {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "canary",
+        requires = {{ "zbirenbaum/copilot.lua" }, { "nvim-lua/plenary.nvim" }},
+        after = { 'copilot.lua' },
     }
 
     use {
