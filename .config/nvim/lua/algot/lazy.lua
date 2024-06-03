@@ -19,6 +19,9 @@ require('lazy').setup {
     {
         'nvim-telescope/telescope.nvim',
         event = 'VeryLazy',
+        config = function()
+            require('algot.config.telescope')
+        end,
         dependencies = {
             'nvim-lua/plenary.nvim',
         },
@@ -50,20 +53,18 @@ require('lazy').setup {
         'nvim-treesitter/nvim-treesitter',
         event = 'VeryLazy',
         build = ':TSUpdate',
-    },
-
-    {
-        'ThePrimeagen/harpoon',
-        branch = 'harpoon2',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-        },
+        config = function()
+            require('algot.config.treesitter')
+        end
     },
 
     -- lsp stuff
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
+        config = function()
+            require('algot.config.lsp')
+        end,
         dependencies = {
             -- lspconfig
             'neovim/nvim-lspconfig',
@@ -90,38 +91,69 @@ require('lazy').setup {
         'onsails/lspkind.nvim'
     },
     {
-        'rmagatti/goto-preview'
+        'rmagatti/goto-preview',
+        config = function()
+            require('algot.config.gotoPreview')
+        end,
     },
 
     -- buffers and powerline
     {
         'akinsho/bufferline.nvim',
         version = '*',
+        config = function()
+            require('algot.config.bufferline')
+        end,
+        dependencies = {
+            'nvim-tree/nvim-web-devicons'
+        },
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        config = function()
+            require('algot.config.lualine')
+        end,
         dependencies = {
             'nvim-tree/nvim-web-devicons'
         }
     },
+
+    -- navigation
     {
-        'nvim-lualine/lualine.nvim',
+        'ThePrimeagen/harpoon',
+        branch = 'harpoon2',
+        config = function()
+            require('algot.config.harpoon')
+        end,
         dependencies = {
-            'nvim-tree/nvim-web-devicons'
-        }
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+        },
     },
 
     -- startview
     {
-        'goolord/alpha.nvim'
+        'goolord/alpha-nvim',
+        config = function()
+            require('algot.config.startscreen')
+        end
     },
 
     -- diagnostics + todos
     {
-        'folke/trouble.nvim'
+        'folke/trouble.nvim',
+        config = function()
+            require('algot.config.trouble')
+        end,
         dependencies = {
             'nvim-tree/nvim-web-devicons'
         }
     },
     {
         'folke/todo-comments.nvim',
+        config = function()
+            require('algot.config.todos')
+        end,
         dependencies = {
             'nvim-lua/plenary.nvim'
         }
@@ -129,18 +161,21 @@ require('lazy').setup {
 
     -- colourscheme
     {
-        'rebelot/kanagawa.nvim'
+        'rebelot/kanagawa.nvim',
+        config = function()
+            require('algot.config.kanagawa')
+        end,
     },
 
-    -- copilot
-    {
-        'zbirenbaum/copilot.lua'
-    },
-    {
-        'zbirenbaum/copilot-cmp',
-        dependencies = { 
-            'zbirenbaum/copilot.lua' 
-        },
-    }
+    -- todo: add copilot to work-config
+    -- {
+    --     'zbirenbaum/copilot.lua'
+    -- },
+    -- {
+    --     'zbirenbaum/copilot-cmp',
+    --     dependencies = { 
+    --         'zbirenbaum/copilot.lua' 
+    --     },
+    -- }
 }
 

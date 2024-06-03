@@ -1,0 +1,80 @@
+local lsp = require('lsp-zero')
+
+lsp.on_attach(function(client, bufnr)
+    local opts = { buffer = bufnr, remap = false}
+
+    local map = vim.keymap.set
+
+    map('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+    map('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
+    map('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
+    map('n', 'gh', function() vim.lsp.buf.hover() end, opts)
+    map('n', 'grn', function() vim.lsp.buf.rename() end, opts)
+    map('n', 'grf', function() vim.lsp.buf.references() end, opts)
+    map('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+    map('n', '<leader>h', function() vim.diagnostic.open_float() end, opts)
+    map('n', 'gl', function() vim.lsp.buf.workspace_symbol() end, opts)
+    map('n', 'gj', function() vim.lsp.buf.code_action() end, opts)
+    map('v', 'gj', function() vim.lsp.buf.code_action() end, opts)
+    map('n', '<leader>b', function() vim.lsp.buf.format() end, opts)
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    ensure_installed = {'emmet_ls'},
+    handlers = {
+        lsp.default_setup,
+        lua_ls = function()
+            local lua_opts = lsp.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
+        end,
+    }
+})
+
+local lspconfig = require('lspconfig')
+
+lspconfig.emmet_ls.setup({
+    filetypes = {
+        'html',
+        'typescriptreact',
+        'javascriptreact',
+        'css',
+        'sass',
+        'scss',
+        'less',
+        'vue',
+    }
+})
+
+local cmp = require('cmp')
+local lspkind = require('lspkind')
+
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+cmp.setup({
+    sources = {
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'luasnip' },
+        -- todo: add copilot
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol_text',
+            maxwidth = 100,
+            ellipsis_char = '...',
+
+            before = function (entry, vim_item)
+                return vim_item
+            end
+        }),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    }),
+})
+
