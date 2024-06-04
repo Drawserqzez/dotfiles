@@ -167,15 +167,34 @@ require('lazy').setup {
         end,
     },
 
-    -- todo: add copilot to work-config
-    -- {
-    --     'zbirenbaum/copilot.lua'
-    -- },
-    -- {
-    --     'zbirenbaum/copilot-cmp',
-    --     dependencies = { 
-    --         'zbirenbaum/copilot.lua' 
-    --     },
-    -- }
+    {
+        'zbirenbaum/copilot.lua',
+        event = 'VeryLazy',
+        config = function()
+            require('algot.config.copilot.base')
+        end,
+    },
+    {
+        'zbirenbaum/copilot-cmp',
+        event = 'VeryLazy',
+        config = function()
+            require('algot.config.copilot.cmp')
+        end,
+        dependencies = { 
+            'zbirenbaum/copilot.lua' 
+        },
+    },
+    {
+        'CopilotC-Nvim/CopilotChat.nvim',
+        event = 'VeryLazy',
+        branch = 'canary',
+        config = function()
+            require('algot.config.copilot.chat')
+        end,
+        dependencies = {
+            'zbirenbaum/copilot.lua',
+            'nvim-lua/plenary.nvim'
+        }
+    }
 }
 
