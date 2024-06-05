@@ -13,7 +13,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
---todo: move config to subdirectory, reference according to https://github.com/jdhao/nvim-config/blob/master/lua/plugin_specs.lua
 require('lazy').setup {
     -- telescope plugins
     {
@@ -166,6 +165,26 @@ require('lazy').setup {
             require('algot.config.kanagawa')
         end,
     },
+    {
+        'lewis6991/gitsigns.nvim',
+        event = 'VeryLazy',
+        config = function()
+            require('algot.config.gitsigns')
+        end,
+    },
+
+    {
+        'folke/noice.nvim',
+        event = 'VeryLazy',
+        config = function()
+            require('algot.config.noice')
+        end,
+        dependencies = {
+            'hrsh7th/nvim-cmp',
+            'MunifTanjim/nui.nvim',
+            'rcarriga/nvim-notify',
+        }
+    },
 
     {
         'zbirenbaum/copilot.lua',
@@ -195,6 +214,6 @@ require('lazy').setup {
             'zbirenbaum/copilot.lua',
             'nvim-lua/plenary.nvim'
         }
-    }
+    },
 }
 
