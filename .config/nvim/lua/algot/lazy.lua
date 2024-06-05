@@ -159,10 +159,17 @@ require('lazy').setup {
     },
 
     -- colourscheme
+    -- {
+    --     'rebelot/kanagawa.nvim',
+    --     config = function()
+    --         require('algot.config.kanagawa')
+    --     end,
+    -- },
     {
-        'rebelot/kanagawa.nvim',
+        'rose-pine/neovim', 
+        as = 'rose-pine',
         config = function()
-            require('algot.config.kanagawa')
+            require('algot.config.rose-pine')
         end,
     },
     {
