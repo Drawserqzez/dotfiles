@@ -9,7 +9,21 @@ require('rose-pine').setup({
         migrations = true,
     },
 
-    
+    styles = {
+        bold = true,
+        italic = true,
+        transparency = true,
+    },
+
+    highlight_group = {
+        TelescopeBorder = { fg = "highlight_high", bg = "none" },
+		TelescopeNormal = { bg = "none" },
+		TelescopePromptNormal = { bg = "base" },
+		TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+		TelescopeSelection = { fg = "text", bg = "base" },
+		TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
+		NotifyBackground = { bg = "none" },
+    },
 })
 
 vim.cmd('colorscheme rose-pine')

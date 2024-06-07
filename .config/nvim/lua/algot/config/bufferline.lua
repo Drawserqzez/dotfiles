@@ -1,3 +1,5 @@
+local highlights = require('rose-pine.plugins.bufferline')
+
 require('bufferline').setup {
     options = {
         diagnostics = 'nvim_lsp',
@@ -15,7 +17,8 @@ require('bufferline').setup {
         },
         color_icons = true,
         separator_style = 'slope',
-        sort_by = 'directory'
+        sort_by = 'directory',
+        hightlights = highlights,
     }
 }
 
