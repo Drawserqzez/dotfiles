@@ -207,6 +207,7 @@ require('lazy').setup {
             require('algot.config.copilot.cmp')
         end,
         dependencies = { 
+            'hrsh7th/nvim-cmp',
             'zbirenbaum/copilot.lua' 
         },
     },

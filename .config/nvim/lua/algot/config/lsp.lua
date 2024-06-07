@@ -57,13 +57,16 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
         { name = 'luasnip' },
-        -- todo: add copilot
+        { name = 'copilot' },
     },
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol_text',
             maxwidth = 100,
             ellipsis_char = '...',
+            symbol_map = {
+                Copilot = '',
+            },
 
             before = function (entry, vim_item)
                 return vim_item

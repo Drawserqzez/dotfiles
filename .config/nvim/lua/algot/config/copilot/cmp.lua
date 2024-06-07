@@ -1,1 +1,3 @@
-require('copilot_cmp').setup() --todo: more setup?
+require('copilot_cmp').setup({
+    fix_pairs = true,
+})
