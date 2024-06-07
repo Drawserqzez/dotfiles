@@ -99,6 +99,7 @@ require('lazy').setup {
     -- buffers and powerline
     {
         'akinsho/bufferline.nvim',
+        event = 'ColorScheme',
         version = '*',
         config = function()
             require('algot.config.bufferline')
@@ -109,6 +110,7 @@ require('lazy').setup {
     },
     {
         'nvim-lualine/lualine.nvim',
+        event = 'ColorScheme',
         config = function()
             require('algot.config.lualine')
         end,
