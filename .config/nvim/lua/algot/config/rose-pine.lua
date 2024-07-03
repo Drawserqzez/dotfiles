@@ -1,6 +1,5 @@
 require('rose-pine').setup({
-    variant = 'main',
-    dark_variant = 'main',
+    variant = 'moon',
     dim_inactive_windows = false,
     extend_background_behind_borders = true,
 
