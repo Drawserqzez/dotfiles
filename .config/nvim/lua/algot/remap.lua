@@ -13,6 +13,9 @@ map('n', 'K', '5k', { noremap = true })
 map('n', 'H', '10h', { noremap = true })
 map('n', 'L', '10l', { noremap = true })
 
+map('n', '<C-d>', '<C-d>zz', { noremap = true })
+map('n', '<C-u>', '<C-u>zz', { noremap = true })
+
 map('n', '<leader>s', vim.cmd.sp)
 map('n', '<leader>v', vim.cmd.vsp)
 
