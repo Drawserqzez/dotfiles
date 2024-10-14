@@ -8,10 +8,10 @@ map('v', 'ö', '^', { noremap = true })
 map('n', 'ä', '$', { noremap = true })
 map('v', 'ä', '$', { noremap = true })
 
-map('n', 'J', '5j', { noremap = true })
-map('n', 'K', '5k', { noremap = true })
-map('n', 'H', '10h', { noremap = true })
-map('n', 'L', '10l', { noremap = true })
+-- map('n', 'J', '5j', { noremap = true })
+-- map('n', 'K', '5k', { noremap = true })
+-- map('n', 'H', '10h', { noremap = true })
+-- map('n', 'L', '10l', { noremap = true })
 
 map('n', '<C-d>', '<C-d>zz', { noremap = true })
 map('n', '<C-u>', '<C-u>zz', { noremap = true })
@@ -39,8 +39,9 @@ map('n', '<leader>Y', "\"+Y")
 
 map('n', 'Q', '<nop>')
 
-map('n', '<leader>l', ':noh<CR>')
+map('n', '<leader>l', ':noh<CR>', { silent=true })
 
 map('n', '<leader>cwd', ':cd %:h <CR>')
-map('n', '<leader>cfr', ':source $MYVIMRC <CR>')
+map('n', '<leader>cfr', ':source ~/.config/nvim/init.lua <CR>')
 
+map('n', '<leader>tn', ':tabnew<CR>', { silent = true })
