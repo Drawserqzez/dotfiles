@@ -84,7 +84,11 @@ require('lazy').setup {
         }
     },
     {
-        'mfussenegger/nvim-dap'
+        'mfussenegger/nvim-dap',
+        config = function()
+            require('algot.config.dap')
+        end,
+        event = 'VeryLazy'
     },
     {
         'onsails/lspkind.nvim'
@@ -194,36 +198,36 @@ require('lazy').setup {
             'rcarriga/nvim-notify',
         }
     },
-
-    {
-        'zbirenbaum/copilot.lua',
-        event = 'VeryLazy',
-        config = function()
-            require('algot.config.copilot.base')
-        end,
-    },
-    {
-        'zbirenbaum/copilot-cmp',
-        event = 'VeryLazy',
-        config = function()
-            require('algot.config.copilot.cmp')
-        end,
-        dependencies = { 
-            'hrsh7th/nvim-cmp',
-            'zbirenbaum/copilot.lua' 
-        },
-    },
-    {
-        'CopilotC-Nvim/CopilotChat.nvim',
-        event = 'VeryLazy',
-        branch = 'canary',
-        config = function()
-            require('algot.config.copilot.chat')
-        end,
-        dependencies = {
-            'zbirenbaum/copilot.lua',
-            'nvim-lua/plenary.nvim'
-        }
-    },
+    --
+    -- {
+    --     'zbirenbaum/copilot.lua',
+    --     event = 'VeryLazy',
+    --     config = function()
+    --         require('algot.config.copilot.base')
+    --     end,
+    -- },
+    -- {
+    --     'zbirenbaum/copilot-cmp',
+    --     event = 'VeryLazy',
+    --     config = function()
+    --         require('algot.config.copilot.cmp')
+    --     end,
+    --     dependencies = { 
+    --         'hrsh7th/nvim-cmp',
+    --         'zbirenbaum/copilot.lua' 
+    --     },
+    -- },
+    -- {
+    --     'CopilotC-Nvim/CopilotChat.nvim',
+    --     event = 'VeryLazy',
+    --     branch = 'canary',
+    --     config = function()
+    --         require('algot.config.copilot.chat')
+    --     end,
+    --     dependencies = {
+    --         'zbirenbaum/copilot.lua',
+    --         'nvim-lua/plenary.nvim'
+    --     }
+    -- },
 }
 

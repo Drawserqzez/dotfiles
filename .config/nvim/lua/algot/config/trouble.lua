@@ -1,7 +1,7 @@
 local trouble = require('trouble')
 
 trouble.setup {
-    focus = true,
+    focus = false,
     indent_guides = true,
     auto_close = true,
 }

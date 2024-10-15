@@ -16,7 +16,7 @@ lsp.on_attach(function(client, bufnr)
     map('n', 'gl', function() vim.lsp.buf.workspace_symbol() end, opts)
     map('n', 'gj', function() vim.lsp.buf.code_action() end, opts)
     map('v', 'gj', function() vim.lsp.buf.code_action() end, opts)
-    map('n', '<leader>b', function() vim.lsp.buf.format() end, opts)
+    map('n', '<leader>m', function() vim.lsp.buf.format() end, opts)
 end)
 
 require('mason').setup({})
