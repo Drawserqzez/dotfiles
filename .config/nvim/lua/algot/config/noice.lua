@@ -12,6 +12,30 @@ require('noice').setup({
         long_message_to_split = true,
         inc_rename = false,
         lsp_doc_border = false,
-    }
+    },
+    views = {
+        notify = {
+            merge = true,
+            replace = true,
+        }
+    },
+    routes = {
+        {
+            filter = {
+                event = 'msg_show',
+                kind = "",
+                find = "written",
+            },
+            opts = { skip = true },
+        },
+        {
+            view = "notify",
+            filter = { event = "msg_showmode" },
+        },
+    },
 })
 
+require('notify').setup({
+    background_colour = "#000000",
+    render="compact"
+})
