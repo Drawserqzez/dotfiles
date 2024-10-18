@@ -1,5 +1,34 @@
 local dap = require('dap')
 
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+local custom_picker = function(extension)
+    local opts = {}
+    return pickers.new(opts, {
+        prompt_title='Select ' .. extension,
+        finder = finders.new_oneshot_job({ "fd", "--hidden", "--no-ignore", "--type", "f", "-e", extension }, opts),
+        sorter = conf.generic_sorter(opts),
+        attach_mappings = function(buf_no)
+            actions.select_default:replace(function()
+                actions.close(buf_no)
+                return action_state.get_selected_entry()[1]
+            end)
+            return true
+        end,
+    })
+    :find()
+end
+
+local print_selected_entry = function(buf_no)
+    local selected_entry = action_state.get_selected_entry()
+    vim.pretty_print(selected_entry)
+    actions.close(buf_no)
+end
+
 local dotnet_build = function()
     local default_path = vim.fn.getcwd() .. '/'
 
@@ -8,18 +37,31 @@ local dotnet_build = function()
     end
 
     local path = vim.fn.input('Path to your proj file: ', default_path, 'file')
+    -- local path = custom_picker('csproj')
+    -- local path = require('telescope.builtin').find_files({
+    --     hidden = true,
+    --     no_ignore = true,
+    --     search_file='.csproj',
+    --     prompt_title = 'find csproj',
+    --     attach_mappings = function(_, map)
+    --         map('n', '<cr>', print_selected_entry)
+    --         map('i', '<cr>', print_selected_entry)
+    --         return true
+    --     end,
+    -- })
 
     vim.g['dotnet_last_proj_path'] = path
 
     local cmd = { 'dotnet', 'build', '-c', 'Debug', path, '>', '/dev/null' }
 
+    -- todo: improve use of notify
     require('notify')('Building...', 'info')
 
     local on_build_finish = function(res)
         if res.code == 0 then
             require('notify')('Build finished ✔️ ', 'info')
         else
-            require('notify')('\nBuild: ❌ (code: ' .. res.code .. '), Msg: ' .. res.stderr, 'error')
+            require('notify')('\nBuild failed ❌ (code: ' .. res.code .. '), Msg: ' .. res.stderr, 'error')
         end
     end
 
