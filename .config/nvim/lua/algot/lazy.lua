@@ -172,7 +172,7 @@ require('lazy').setup {
     --     end,
     -- },
     {
-        'rose-pine/neovim', 
+        'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
             require('algot.config.rose-pine')
@@ -198,6 +198,19 @@ require('lazy').setup {
             'rcarriga/nvim-notify',
         }
     },
+
+    {
+        'theHamsta/nvim-dap-virtual-text',
+        event = '',
+        config = function()
+            require('algot.config.dapText')
+        end,
+        dependencies = {
+            'mfussenegger/nvim-dap',
+            'nvim-treesitter/nvim-treesitter',
+        },
+    },
+
     --
     -- {
     --     'zbirenbaum/copilot.lua',
