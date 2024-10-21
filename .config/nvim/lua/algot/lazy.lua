@@ -201,7 +201,7 @@ require('lazy').setup {
 
     {
         'theHamsta/nvim-dap-virtual-text',
-        event = '',
+        event = 'VeryLazy',
         config = function()
             require('algot.config.dapText')
         end,
