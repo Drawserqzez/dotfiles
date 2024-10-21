@@ -72,6 +72,15 @@ require('lazy').setup {
         end,
     },
 
+    {
+        'kylechui/nvim-surround',
+        version = '*',
+        event = 'VeryLazy',
+        config = function ()
+            require('algot.config.surround')
+        end
+    },
+
     -- lsp stuff
     {
         'VonHeikemen/lsp-zero.nvim',
