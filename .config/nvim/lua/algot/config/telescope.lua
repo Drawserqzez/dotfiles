@@ -21,13 +21,23 @@ telescope.setup {
                     }
                 }
             }
-        }
+        },
+        undo = {
+            mappings = {
+                n = {
+                    ['<CR>'] = require('telescope-undo.actions').restore,
+                }
+            }
+        },
     }
 }
 
 telescope.load_extension("file_browser")
 telescope.load_extension('ui-select')
+telescope.load_extension('undo')
 
 vim.keymap.set('n', '<leader>nn', ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 vim.keymap.set('n', '<leader>nw', ":Telescope file_browser<CR>")
+
+vim.keymap.set('n', 'U', function() telescope.extensions.undo.undo() end)
 
