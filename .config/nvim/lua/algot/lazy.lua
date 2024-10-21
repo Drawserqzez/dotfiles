@@ -64,6 +64,14 @@ require('lazy').setup {
         end
     },
 
+    {
+        'windwp/nvim-autopairs',
+        event = 'InsertEnter',
+        config = function()
+            require('algot.config.autopairs')
+        end,
+    },
+
     -- lsp stuff
     {
         'VonHeikemen/lsp-zero.nvim',
