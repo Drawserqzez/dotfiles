@@ -124,6 +124,21 @@ require('lazy').setup {
         end,
     },
 
+    {
+        'nvim-neotest/neotest',
+        dependencies = {
+            'nvim-neotest/nvim-nio',
+            'nvim-lua/plenary.nvim',
+            'antoinemadec/FixCursorHold.nvim',
+            'nvim-treesitter/nvim-treesitter',
+            'mfussenegger/nvim-dap',
+            'Issafalcon/neotest-dotnet'
+        },
+        config = function()
+            require('algot.config.neotest')
+        end,
+    },
+
     -- buffers and powerline
     {
         'akinsho/bufferline.nvim',
