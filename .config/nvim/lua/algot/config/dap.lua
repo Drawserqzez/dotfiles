@@ -52,7 +52,7 @@ local dotnet_build = function()
 
     vim.g['dotnet_last_proj_path'] = path
 
-    local cmd = { 'dotnet', 'build', '-c', 'Debug', path, '>', '/dev/null' }
+    local cmd = { 'dotnet', 'build', '-c', 'Debug', path, }
 
     -- todo: improve use of notify
     require('notify')('Building...', 'info')
@@ -61,7 +61,7 @@ local dotnet_build = function()
         if res.code == 0 then
             require('notify')('Build finished ✔️ ', 'info')
         else
-            require('notify')('\nBuild failed ❌ (code: ' .. res.code .. '), Msg: ' .. res.stderr, 'error')
+            require('notify')('\nBuild failed ❌ (code: ' .. res.code .. '), Msg: ' .. res.stdout, 'error')
         end
     end
 
@@ -103,6 +103,8 @@ local ui = require('dap.ui.widgets')
 
 vim.keymap.set({'n','v'}, '<leader>dh', function() ui.hover() end)
 vim.keymap.set({'n','v'}, '<leader>dp', function() ui.preview() end)
+
+vim.keymap.set('n', '<leader>db', function() dotnet_build() end)
 
 dap.adapters.coreclr = {
     type='executable',
