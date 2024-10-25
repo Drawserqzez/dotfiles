@@ -1,4 +1,5 @@
 local dap = require('dap')
+local utils = require('dap.utils')
 
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
@@ -109,7 +110,7 @@ vim.keymap.set('n', '<leader>db', function() dotnet_build() end)
 dap.adapters.coreclr = {
     type='executable',
     command = '/home/algoth/.local/share/nvim/mason/bin/netcoredbg',
-    args = { '--interpreter=vscode' }
+    args = { '--interpreter=vscode' },
 }
 
 dap.configurations.cs = {
@@ -117,6 +118,8 @@ dap.configurations.cs = {
         type = 'coreclr',
         name = 'launch - netcoredbg',
         request = 'launch',
+        justMyCode = false,
+        stopAtEntry = true,
         program = function()
             if vim.fn.confirm('Rebuild?', '&ye\n&no', 2) == 1 then
                 dotnet_build()
@@ -124,10 +127,30 @@ dap.configurations.cs = {
 
             return dotnet_get_dll()
         end,
+        env = {
+            ASPNETCORE_ENVIRONMENT = function()
+                -- todo: maybe get dynamically?
+                return 'Development'
+            end
+        },
     },
+    {
+        type = 'coreclr',
+        name = 'attach - netcoredbg',
+        request = 'attach',
+        justMyCode = false,
+        processId= utils.pick_process,
+        env = {
+            ASPNETCORE_ENVIRONMENT = function()
+                -- todo: maybe get dynamically?
+                return 'Development'
+            end
+        },
+    }
 }
 
 vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapLogPoint', {text='', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapStopped', {text='', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected',{text='', texthl='', linehl='', numhl=''})
 
