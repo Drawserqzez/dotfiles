@@ -162,6 +162,14 @@ require('lazy').setup {
         }
     },
 
+    -- {
+    --     'rebelot/heirline.nvim',
+    --     event = 'UiEnter',
+    --     config = function()
+    --         require('algot.config.heirline')
+    --     end,
+    -- },
+
     -- navigation
     {
         'ThePrimeagen/harpoon',
