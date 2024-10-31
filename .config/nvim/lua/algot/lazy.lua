@@ -225,6 +225,15 @@ require('lazy').setup {
             require('algot.config.rose-pine')
         end,
     },
+
+    {
+        'rktjmp/lush.nvim',
+        config = function()
+            require('algot.config.lush')
+        end,
+    },
+
+    -- ui sttuff i guess
     {
         'lewis6991/gitsigns.nvim',
         event = 'VeryLazy',
