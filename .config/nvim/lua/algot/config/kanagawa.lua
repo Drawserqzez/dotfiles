@@ -6,7 +6,7 @@ kanagawa.setup({
     colors = {
         theme = {
             all = {
-                ui = { 
+                ui = {
                     bg_gutter = "none"
                 }
             }
@@ -14,5 +14,6 @@ kanagawa.setup({
     }
 })
 
-vim.cmd('colorscheme kanagawa-wave')
+-- "vim.cmd('colorscheme kanagawa-wave')
 
+kanagawa.load("wave")
