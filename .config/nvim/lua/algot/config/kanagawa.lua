@@ -16,4 +16,4 @@ kanagawa.setup({
 
 -- "vim.cmd('colorscheme kanagawa-wave')
 
-kanagawa.load("wave")
+-- kanagawa.load("wave")

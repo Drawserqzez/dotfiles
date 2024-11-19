@@ -218,13 +218,32 @@ require('lazy').setup {
             require('algot.config.kanagawa')
         end,
     },
-    -- {
-    --     'rose-pine/neovim',
-    --     as = 'rose-pine',
-    --     config = function()
-    --         require('algot.config.rose-pine')
-    --     end,
-    -- },
+    {
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            require('algot.config.rose-pine')
+        end,
+    },
+    {
+        'ribru17/bamboo.nvim',
+        config = function()
+            require('algot.config.bamboo')
+        end,
+    },
+
+    {
+        'zaldih/themery.nvim',
+        lazy = false,
+        config = function()
+            require('algot.config.colour')
+        end,
+        dependencies = {
+            'rose-pine/neovim',
+            'rebelot/kanagawa.nvim',
+            'ribru17/bamboo.nvim'
+        }
+    },
 
     {
         'rktjmp/lush.nvim',
