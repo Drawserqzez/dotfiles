@@ -2,7 +2,7 @@
 
 cd ~
 
-if ! test (git --version)
+if ! type -q git
     echo "You need git installed"
     return 69
 end
@@ -20,7 +20,7 @@ git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showuntra
 
 cd ~
 
-if ! test (curl --version)
+if ! type -q curl
     echo "Need curl to setup fisher"
     return 69
 end
