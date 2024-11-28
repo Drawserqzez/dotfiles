@@ -25,6 +25,6 @@ if ! type -q curl
     return 69
 end
 
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fisher update
 
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp
