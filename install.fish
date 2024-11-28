@@ -17,3 +17,13 @@ git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout main --force
 
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showuntrackedfiles no
 
+
+cd ~
+
+if ! test (curl --version)
+    echo "Need curl to setup fisher"
+    return 69
+end
+
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
+
