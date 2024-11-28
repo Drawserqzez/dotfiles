@@ -27,3 +27,4 @@ end
 
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
 
+fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp

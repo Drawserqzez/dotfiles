@@ -17,7 +17,7 @@ function starship_transient_rprompt_func
     starship module time
 end
 
-if starship --version >> /dev/null
+if type -q starship
     starship init fish | source
     enable_transience
 end
