@@ -183,6 +183,13 @@ require('lazy').setup {
         },
     },
 
+    {
+        'christoomey/vim-tmux-navigator',
+        config = function()
+            require('algot.config.tmuxNavigation')
+        end,
+    },
+
     -- startview
     {
         'goolord/alpha-nvim',
