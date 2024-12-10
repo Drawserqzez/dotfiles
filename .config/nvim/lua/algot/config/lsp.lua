@@ -1,7 +1,7 @@
 local lsp = require('lsp-zero')
 
 lsp.on_attach(function(client, bufnr)
-    local opts = { buffer = bufnr, remap = false}
+    local opts = { buffer = bufnr, remap = false }
 
     local map = vim.keymap.set
 
@@ -21,7 +21,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {'emmet_ls'},
+    ensure_installed = { 'emmet_ls', 'volar', 'ts_ls', 'omnisharp' },
     handlers = {
         lsp.default_setup,
         lua_ls = function()
@@ -46,6 +46,27 @@ lspconfig.emmet_ls.setup({
     }
 })
 
+lspconfig.volar.setup {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    init_options = {
+        vue = {
+            hybridMode = false
+        }
+    }
+}
+
+lspconfig.ts_ls.setup {
+    init_options = {
+        plugins = {
+            {
+                name = '@vue/typescript-plugin',
+                location = require('mason-registry').get_package('vue-language-server'):get_install_path(),
+                languages = { 'vue' },
+            }
+        }
+    }
+}
+
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
@@ -68,7 +89,7 @@ cmp.setup({
                 Copilot = '',
             },
 
-            before = function (entry, vim_item)
+            before = function(entry, vim_item)
                 return vim_item
             end
         }),
@@ -80,4 +101,3 @@ cmp.setup({
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     }),
 })
-
