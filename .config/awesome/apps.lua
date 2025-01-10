@@ -1,9 +1,9 @@
 local awful = require('awful')
-local fs = require('gears.filesystem')
+-- local fs = require('gears.filesystem')
 
 local apps = {}
 
-apps.default {
+apps.default = {
     terminal = 'wezterm',
     launcher = 'rofi -modi drun -show drun -show-icons -width 22',
     lock = 'xsecurelock',
