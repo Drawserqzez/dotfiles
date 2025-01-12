@@ -16,6 +16,8 @@ local keys = {}
 keys.globalkeys = gears.table.join(
     awful.key({ modkey }, 'r',
         function()
+            print('spawning launcher')
+            print(apps.launcher)
             awful.spawn(apps.launcher)
         end,
         {
@@ -49,16 +51,6 @@ keys.globalkeys = gears.table.join(
         {
             description="show help",
             group="awesome"
-        }
-    ),
-
-    awful.key({ modkey }, 'q',
-        function(c)
-            c:kill()
-        end,
-        {
-            description = 'close',
-            group = 'client'
         }
     ),
 
@@ -225,5 +217,19 @@ for i = 1, 9 do
         )
     )
 end
+
+keys.clientkeys = gears.table.join(
+
+    awful.key({ modkey }, 'q',
+        function(c)
+            c:kill()
+        end,
+        {
+            description = 'close',
+            group = 'client'
+        }
+    )
+
+)
 
 return keys

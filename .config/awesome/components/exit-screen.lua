@@ -3,7 +3,7 @@ local gears = require('gears')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 
-local clickableContainer = require('widgets.clickable-container')
+local clickable_container = require('widgets.clickable-container')
 
 local apps = require('apps').default
 local dpi = beautiful.xresources.apply_dpi
@@ -30,7 +30,7 @@ local build_button = function(icon)
             shape = gears.shape.circle,
             forced_width = icon_size,
             forced_height = icon_size,
-            widget = clickableContainer
+            widget = clickable_container
         },
         left = dpi(24),
         right = dpi(24),
@@ -65,7 +65,7 @@ local function reboot_command()
     awful.keygrabber.stop(exit_screen_grabber)
 end
 
-local poweroff = build_button(ICON_DIR .. 'Power.png')
+local poweroff = build_button(ICON_DIR .. 'Power.png', 'Shutdown')
 poweroff:connect_signal(
     'button::release',
     function()
@@ -73,7 +73,7 @@ poweroff:connect_signal(
     end
 )
 
-local reboot = build_button(ICON_DIR .. 'Restart.png')
+local reboot = build_button(ICON_DIR .. 'Restart.png', 'Restart')
 reboot:connect_signal(
     'button::release',
     function()
@@ -81,7 +81,7 @@ reboot:connect_signal(
     end
 )
 
-local suspend = build_button(ICON_DIR .. 'Sleep.png')
+local suspend = build_button(ICON_DIR .. 'Sleep.png', 'Sleep')
 suspend:connect_signal(
     'button::release',
     function()
@@ -89,7 +89,7 @@ suspend:connect_signal(
     end
 )
 
-local exit = build_button(ICON_DIR .. 'Exit.png')
+local exit = build_button(ICON_DIR .. 'Exit.png', 'Logout')
 exit:connect_signal(
     'button::release',
     function()
@@ -97,7 +97,7 @@ exit:connect_signal(
     end
 )
 
-local lock = build_button(ICON_DIR .. 'Lock.png')
+local lock = build_button(ICON_DIR .. 'Lock.png', 'Lock')
 lock:connect_signal(
     'button::release',
     function()
@@ -142,6 +142,7 @@ exit_screen.widget = wibox({
     type = 'splash',
     height = screen_geometry.height,
     width = screen_geometry.width,
+    bg = '#333333'
 })
 
 function exit_screen.hide()

@@ -25,7 +25,7 @@ function apps.autostart()
         if firstSpace then
             findme = app:sub(0, firstSpace - 1)
         else
-            awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, app), false)
+            awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null; or %s", findme, app), false)
         end
     end
 end
