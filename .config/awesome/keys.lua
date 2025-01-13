@@ -46,6 +46,16 @@ keys.globalkeys = gears.table.join(
         }
     ),
 
+    awful.key({ modkey, 'Shift' }, 's',
+        function()
+            awful.spawn(apps.screenshot)
+        end,
+        {
+            description = 'screenshot with flameshot',
+            group = 'launcher'
+        }
+    ),
+
     awful.key({ modkey }, 's',
         hotkeys_popup.show_help,
         {
@@ -182,6 +192,37 @@ keys.globalkeys = gears.table.join(
             description = 'toggle exit screen',
             group = 'hotkeys'
         }
+    ),
+
+    -- XF86AudioPlay, XF86AudioStop, XF86AudioPrev and XF86AudioNext.
+    awful.key({}, 'XF86AudioPlay',
+        function ()
+            awful.spawn('playerctl play-pause')
+        end,
+        {
+            description = 'toggle play/pause',
+            group = 'hotkeys'
+        }
+    ),
+
+    awful.key({}, 'XF86AudioNext',
+        function ()
+            awful.spawn('playerctl next')
+        end,
+        {
+            description = 'next song',
+            group = 'hotkeys'
+        }
+    ),
+
+    awful.key({}, 'XF86AudioPrev',
+        function ()
+            awful.spawn('playerctl previous')
+        end,
+        {
+            description = 'previous song',
+            group = 'hotkeys'
+        }
     )
 )
 
@@ -201,12 +242,13 @@ for i = 1, 9 do
             }
         ),
 
+
         awful.key({ modkey, 'Shift' }, '#' .. i + 9,
             function()
                 if client.focus then
                     local tag = client.focus.screen.tags[i]
                     if tag then
-                        client.focus.move_to_tag(tag)
+                        client.focus:move_to_tag(tag)
                     end
                 end
             end,
@@ -218,6 +260,25 @@ for i = 1, 9 do
     )
 end
 
+keys.clientbuttons = gears.table.join(
+    awful.button({}, 1,
+    function(c)
+        c:emit_signal('request:activate', 'mouse_click', { raise = true })
+    end),
+
+    awful.button({ modkey }, 1,
+    function(c)
+        c:emit_signal('request:activate', 'mouse_click', { raise = true })
+        awful.mouse.client.move(c)
+    end),
+
+    awful.button({ modkey }, 3,
+    function(c)
+        c:emit_signal('request:activate', 'mouse_click', { raise = true })
+        awful.mouse.client.resize(c)
+    end)
+)
+
 keys.clientkeys = gears.table.join(
 
     awful.key({ modkey }, 'q',
@@ -226,6 +287,35 @@ keys.clientkeys = gears.table.join(
         end,
         {
             description = 'close',
+            group = 'client'
+        }
+    ),
+
+    awful.key({ modkey }, 'f',
+        function (c)
+            c.fullscreen = not c.fullscreen
+            c:raise()
+        end,
+        {
+            description = 'toggle fullscreen',
+            group = 'client'
+        }
+    ),
+
+    awful.key({ modkey, 'Control' }, 'Space',
+        awful.client.floating.toggle,
+        {
+            description = 'toggle floating',
+            group = 'client'
+        }
+    ),
+
+    awful.key({ modkey, 'Control' }, 'Tab',
+        function (c)
+            c:move_to_screen()
+        end,
+        {
+            description = 'move to screen',
             group = 'client'
         }
     )
