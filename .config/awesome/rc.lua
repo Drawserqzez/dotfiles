@@ -27,6 +27,9 @@ root.keys(keys.globalkeys)
 
 require('components.exit-screen')
 
+awful.spawn.with_shell("killall nm-applet")
+awful.spawn.with_shell("killall blueman-applet")
+
 local apps = require('apps')
 apps.autostart()
 
@@ -71,24 +74,26 @@ editor = apps.default.editor
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    -- awful.layout.suit.tile.left,
-    -- awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.tile.top,
-    -- awful.layout.suit.fair,
-    -- awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
-}
+awful.layout.layouts = require('layouts')
+
+-- awful.layout.layouts = {
+--     awful.layout.suit.floating,
+--     awful.layout.suit.tile,
+--     -- awful.layout.suit.tile.left,
+--     -- awful.layout.suit.tile.bottom,
+--     -- awful.layout.suit.tile.top,
+--     -- awful.layout.suit.fair,
+--     -- awful.layout.suit.fair.horizontal,
+--     awful.layout.suit.spiral,
+--     -- awful.layout.suit.spiral.dwindle,
+--     awful.layout.suit.max,
+--     awful.layout.suit.max.fullscreen,
+--     -- awful.layout.suit.magnifier,
+--     -- awful.layout.suit.corner.nw,
+--     -- awful.layout.suit.corner.ne,
+--     -- awful.layout.suit.corner.sw,
+--     -- awful.layout.suit.corner.se,
+-- }
 -- }}}
 
 -- {{{ Menu
@@ -194,7 +199,16 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     local tags = require('tags')
-    awful.tag(tags, s, awful.layout.layouts[1])
+
+    for i, t in ipairs(tags) do
+        awful.tag.add(t.tag, {
+            screen = s,
+            layout = t.layout,
+            gap_single_client = true,
+            selected = i == 1
+        })
+    end
+    -- awful.tag(tags, s, awful.layout.layouts[3])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -467,3 +481,9 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+collectgarbage("setpause", 110)
+collectgarbage("setstepmul", 1000)
+
+awful.spawn.with_shell("blueman-applet")
+awful.spawn.with_shell("nm-applet")

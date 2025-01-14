@@ -1,7 +1,15 @@
+local layouts = require('layouts')
+
 local tags = {
-    "一", "二", "三",
-    "四", "五", "六",
-    "七", "八", "九"
+    { tag = "一", layout = layouts[3] },
+    { tag = "二", layout = layouts[3] },
+    { tag = "三", layout = layouts[3] },
+    { tag = "四", layout = layouts[1] },
+    { tag = "五", layout = layouts[1] },
+    { tag = "六", layout = layouts[1] },
+    { tag = "七", layout = layouts[1] },
+    { tag = "八", layout = layouts[1] },
+    { tag = "九", layout = layouts[1] }
 }
 
 return tags

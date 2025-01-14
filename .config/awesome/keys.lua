@@ -2,6 +2,7 @@ local awful = require('awful')
 local gears = require('gears')
 local naughty = require('naughty')
 local beautiful = require('beautiful')
+local wibox = require('wibox')
 local dpi = beautiful.xresources.apply_dpi
 local hotkeys_popup = require('awful.hotkeys_popup')
 require('awful.hotkeys_popup.keys')
@@ -61,6 +62,17 @@ keys.globalkeys = gears.table.join(
         {
             description="show help",
             group="awesome"
+        }
+    ),
+
+    awful.key({ modkey, 'Control' }, 'p',
+        function ()
+            local tray_widget = wibox.widget.systray()
+            tray_widget:set_screen(awful.screen.focused())
+        end,
+        {
+            description = 'move systray to current screen',
+            group = 'screen'
         }
     ),
 
