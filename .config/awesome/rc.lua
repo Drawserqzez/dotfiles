@@ -27,6 +27,8 @@ root.keys(keys.globalkeys)
 
 require('components.exit-screen')
 
+-- local battery = require('widgets.battery')
+
 awful.spawn.with_shell("killall nm-applet")
 awful.spawn.with_shell("killall blueman-applet")
 
@@ -193,6 +195,10 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+-- reload awesome on screens changed
+screen.connect_signal('added', function () awesome.restart() end)
+screen.connect_signal('removed', function () awesome.restart() end)
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -250,6 +256,13 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            {
+                -- battery,
+                shape = gears.shape.rounded_bar,
+                shape_border_width = 100,
+                bg = '#293039',
+                widget = wibox.container.background
+            },
             mytextclock,
             s.mylayoutbox,
         },
