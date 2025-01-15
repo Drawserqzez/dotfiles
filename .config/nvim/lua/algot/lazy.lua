@@ -293,6 +293,14 @@ require('lazy').setup {
         },
     },
 
+    {
+        'norcalli/nvim-colorizer.lua',
+        event = 'VeryLazy',
+        config = function()
+            require('algot.config.colouriser')
+        end,
+    },
+
     --
     -- {
     --     'zbirenbaum/copilot.lua',
