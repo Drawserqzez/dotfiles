@@ -28,6 +28,7 @@ root.keys(keys.globalkeys)
 require('components.exit-screen')
 
 -- local battery = require('widgets.battery')
+local spotify_widget = require('widgets.spotify')
 
 awful.spawn.with_shell("killall nm-applet")
 awful.spawn.with_shell("killall blueman-applet")
@@ -254,6 +255,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            spotify_widget,
             mykeyboardlayout,
             wibox.widget.systray(),
             {
