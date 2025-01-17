@@ -502,3 +502,4 @@ collectgarbage("setstepmul", 1000)
 
 awful.spawn.with_shell("blueman-applet")
 awful.spawn.with_shell("nm-applet")
+awful.spawn.with_shell('autorandr -c')
