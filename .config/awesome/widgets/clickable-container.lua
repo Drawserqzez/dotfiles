@@ -3,7 +3,8 @@ local wibox = require('wibox')
 function build(widget)
     local container = wibox.widget {
         widget,
-        widget = wibox.container.background
+        widget = wibox.container.background,
+        visible = true
     }
 
     local old_cursor, old_wibox
