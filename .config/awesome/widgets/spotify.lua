@@ -48,11 +48,19 @@ local watch_cmd = string.format('playerctl -p spotify -f {{%s}} metadata', table
 local function update_metadata(widget, metadata)
     local playing_widget = widget:get_children_by_id('playing')[1]
 
-    playing_widget:set_opacity(metadata.playback_status == 'Playing' and 1 or 0.2)
-
-    playing_widget:set_text('   <   ' .. metadata.artist .. ' -> ' .. metadata.track .. '   >   ')
-
-    playing_widget:emit_signal('widget::redraw_needed')
+    if metadata.playback_status == 'Playing' then
+        playing_widget:set_opacity(1)
+        playing_widget:set_text('   <   ' .. metadata.artist .. ' -> ' .. metadata.track .. '   >   ')
+        playing_widget:emit_signal('widget::redraw_needed')
+    elseif metadata.playback_status == 'Paused' then
+        playing_widget:set_opacity(0.2)
+        playing_widget:set_text('   <   ' .. metadata.artist .. ' -> ' .. metadata.track .. '   >   ')
+        playing_widget:emit_signal('widget::redraw_needed')
+    else
+        playing_widget:set_text('   All quiet :)   ')
+        playing_widget:set_opacity(0.2)
+        playing_widget:emit_signal('widget::redraw_needed')
+    end
 end
 
 watch(watch_cmd, 1,
