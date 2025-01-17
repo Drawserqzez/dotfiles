@@ -30,6 +30,8 @@ require('components.exit-screen')
 -- local battery = require('widgets.battery')
 local spotify_widget = require('widgets.spotify')
 
+local volume_widget = require('widgets.volume')
+
 awful.spawn.with_shell("killall nm-applet")
 awful.spawn.with_shell("killall blueman-applet")
 
@@ -265,6 +267,7 @@ awful.screen.connect_for_each_screen(function(s)
                 bg = '#293039',
                 widget = wibox.container.background
             },
+            volume_widget,
             mytextclock,
             s.mylayoutbox,
         },

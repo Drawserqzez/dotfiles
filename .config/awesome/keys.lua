@@ -235,6 +235,36 @@ keys.globalkeys = gears.table.join(
             description = 'previous song',
             group = 'hotkeys'
         }
+    ),
+
+    awful.key({}, 'XF86AudioRaiseVolume',
+        function()
+            awful.spawn('amixer sset Master 5%+')
+        end,
+        {
+            description = 'raise volume',
+            group = 'hotkeys'
+        }
+    ),
+
+    awful.key({}, 'XF86AudioLowerVolume',
+        function()
+            awful.spawn('amixer sset Master 5%-')
+        end,
+        {
+            description = 'lower volume',
+            group = 'hotkeys'
+        }
+    ),
+
+    awful.key({}, 'XF86AudioMute',
+        function()
+            awful.spawn('amixer sset Master toggle')
+        end,
+        {
+            description = 'mute volume',
+            group = 'hotkeys'
+        }
     )
 )
 
