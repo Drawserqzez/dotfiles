@@ -22,11 +22,7 @@ sp_button:buttons(
     gears.table.join(
         awful.button({}, 1, nil,
             function ()
-                naughty.notify({
-                    text = 'now playing',
-                    title = 'Now Playing',
-                    timeout = 5,
-                })
+                awful.spawn('playerctl -p spotify play-pause')
             end
         )
     )
@@ -50,11 +46,11 @@ local function update_metadata(widget, metadata)
 
     if metadata.playback_status == 'Playing' then
         playing_widget:set_opacity(1)
-        playing_widget:set_text('   <   ' .. metadata.artist .. ' -> ' .. metadata.track .. '   >   ')
+        playing_widget:set_text('   <   ' .. metadata.artist .. '  ' .. metadata.track .. '   >   ')
         playing_widget:emit_signal('widget::redraw_needed')
     elseif metadata.playback_status == 'Paused' then
         playing_widget:set_opacity(0.2)
-        playing_widget:set_text('   <   ' .. metadata.artist .. ' -> ' .. metadata.track .. '   >   ')
+        playing_widget:set_text('   <   ' .. metadata.artist .. '  ' .. metadata.track .. '   >   ')
         playing_widget:emit_signal('widget::redraw_needed')
     else
         playing_widget:set_text('   All quiet :)   ')
