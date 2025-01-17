@@ -14,9 +14,32 @@ local artist_widget = wibox.widget {
 }
 
 local playing_icon_widget = wibox.widget {
-    widget = wibox.widget.textbox,
-    font = font,
-    id = 'playing_iconw'
+    wibox.widget {
+        widget = wibox.widget.textbox,
+        font = 'GeistMono NF Regular 8',
+        ellipsize = 'none',
+        id = 'playing_iconw'
+    },
+    widget = wibox.container.place,
+    fill_vertical = true,
+    fill_horizontal = true,
+    valign = 'center',
+    halign = 'center',
+}
+
+local progress_widget = wibox.widget {
+    widget = wibox.container.arcchart,
+    playing_icon_widget,
+    min_value = 0,
+    max_value = 1,
+    value = 0,
+    thickness = 2,
+    start_angle = 4.71238898, -- 2pi*3/4
+    forced_height = 24,
+    forced_width = 24,
+    rounded_edge = true,
+    colors = { '#ffffff11', 'black' },
+    paddings = 2,
 }
 
 local track_widget = wibox.widget {
@@ -27,7 +50,7 @@ local track_widget = wibox.widget {
 
 local sp_widget = wibox.widget {
     artist_widget,
-    playing_icon_widget,
+    progress_widget,
     track_widget,
     wibox.container.margin(nil, 8, 8, 0, 0, nil, false),
     spacing = 8,
@@ -67,18 +90,20 @@ local function update_metadata(widget, metadata)
         track_widget:set_text(metadata.track)
     end
 
+    progress_widget.values = { 1.0 - (metadata.progress or 0.0), metadata.progress or 0.0 }
+
     if metadata.playback_status == 'Playing' then
         if not sp_button.visible then
             sp_button.visible = true
         end
 
-        playing_icon_widget:set_opacity(1)
+        progress_widget:set_opacity(1)
         artist_widget:set_opacity(1)
         track_widget:set_opacity(1)
 
-        playing_icon_widget:set_text('  ')
+        playing_icon_widget.children[1]:set_text('')
 
-        playing_icon_widget:emit_signal('widget::redraw_needed')
+        progress_widget:emit_signal('widget::redraw_needed')
         artist_widget:emit_signal('widget::redraw_needed')
         track_widget:emit_signal('widget::redraw_needed')
     elseif metadata.playback_status == 'Paused' then
@@ -86,13 +111,13 @@ local function update_metadata(widget, metadata)
             sp_button.visible = true
         end
 
-        playing_icon_widget:set_opacity(0.2)
+        progress_widget:set_opacity(0.2)
         artist_widget:set_opacity(0.2)
         track_widget:set_opacity(0.2)
 
-        playing_icon_widget:set_text('  ')
+        playing_icon_widget.children[1]:set_text('')
 
-        playing_icon_widget:emit_signal('widget::redraw_needed')
+        progress_widget:emit_signal('widget::redraw_needed')
         artist_widget:emit_signal('widget::redraw_needed')
         track_widget:emit_signal('widget::redraw_needed')
     else
