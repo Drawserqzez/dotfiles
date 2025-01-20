@@ -27,7 +27,7 @@ root.keys(keys.globalkeys)
 
 require('components.exit-screen')
 
--- local battery = require('widgets.battery')
+-- local battery_widget = require('widgets.battery')
 local spotify_widget = require('widgets.spotify')
 
 local volume_widget = require('widgets.volume')
@@ -141,7 +141,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock('%a %b %d, %T', 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -268,6 +268,7 @@ awful.screen.connect_for_each_screen(function(s)
                 widget = wibox.container.background
             },
             volume_widget,
+            -- battery_widget,
             mytextclock,
             s.mylayoutbox,
         },
