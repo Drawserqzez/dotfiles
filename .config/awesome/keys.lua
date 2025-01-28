@@ -17,8 +17,6 @@ local keys = {}
 keys.globalkeys = gears.table.join(
     awful.key({ modkey }, 'r',
         function()
-            print('spawning launcher')
-            print(apps.launcher)
             awful.spawn(apps.launcher)
         end,
         {
@@ -209,7 +207,7 @@ keys.globalkeys = gears.table.join(
     -- XF86AudioPlay, XF86AudioStop, XF86AudioPrev and XF86AudioNext.
     awful.key({}, 'XF86AudioPlay',
         function ()
-            awful.spawn('playerctl play-pause')
+            awful.spawn('playerctl play-pause', false)
         end,
         {
             description = 'toggle play/pause',
@@ -219,7 +217,7 @@ keys.globalkeys = gears.table.join(
 
     awful.key({}, 'XF86AudioNext',
         function ()
-            awful.spawn('playerctl next')
+            awful.spawn('playerctl next', false)
         end,
         {
             description = 'next song',
@@ -229,7 +227,7 @@ keys.globalkeys = gears.table.join(
 
     awful.key({}, 'XF86AudioPrev',
         function ()
-            awful.spawn('playerctl previous')
+            awful.spawn('playerctl previous', false)
         end,
         {
             description = 'previous song',
@@ -239,7 +237,7 @@ keys.globalkeys = gears.table.join(
 
     awful.key({}, 'XF86AudioRaiseVolume',
         function()
-            awful.spawn('amixer sset Master 5%+')
+            awful.spawn('amixer sset Master 5%+', false)
         end,
         {
             description = 'raise volume',
@@ -249,7 +247,7 @@ keys.globalkeys = gears.table.join(
 
     awful.key({}, 'XF86AudioLowerVolume',
         function()
-            awful.spawn('amixer sset Master 5%-')
+            awful.spawn('amixer sset Master 5%-', false)
         end,
         {
             description = 'lower volume',
@@ -259,7 +257,7 @@ keys.globalkeys = gears.table.join(
 
     awful.key({}, 'XF86AudioMute',
         function()
-            awful.spawn('amixer sset Master toggle')
+            awful.spawn('amixer sset Master toggle', false)
         end,
         {
             description = 'mute volume',

@@ -74,17 +74,17 @@ volume_button:buttons(
     gears.table.join(
         awful.button({}, 1, nil,
             function ()
-                awful.spawn('amixer sset Master toggle')
+                awful.spawn('amixer sset Master toggle', false)
             end
         ),
         awful.button({}, 4, nil,
             function ()
-                awful.spawn('amixer sset Master 5%+')
+                awful.spawn('amixer sset Master 5%+', false)
             end
         ),
         awful.button({}, 5, nil,
             function ()
-                awful.spawn('amixer sset Master 5%-')
+                awful.spawn('amixer sset Master 5%-', false)
             end
         )
     )

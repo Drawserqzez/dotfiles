@@ -62,7 +62,7 @@ sp_button:buttons(
     gears.table.join(
         awful.button({}, 1, nil,
             function ()
-                awful.spawn('playerctl -p spotify play-pause')
+                awful.spawn('playerctl -p spotify play-pause', false)
             end
         )
     )
