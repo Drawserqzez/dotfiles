@@ -21,7 +21,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'emmet_ls', 'volar', 'ts_ls', 'omnisharp' },
+    ensure_installed = { 'emmet_ls', 'volar', 'ts_ls', 'omnisharp', 'biome' },
     handlers = {
         lsp.default_setup,
         lua_ls = function()
@@ -66,6 +66,10 @@ lspconfig.ts_ls.setup {
         }
     }
 }
+
+lspconfig.biome.setup({
+    filetypes = { 'json' },
+})
 
 local cmp = require('cmp')
 local lspkind = require('lspkind')

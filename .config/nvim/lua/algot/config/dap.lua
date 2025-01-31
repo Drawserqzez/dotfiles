@@ -109,7 +109,7 @@ vim.keymap.set('n', '<leader>db', function() dotnet_build() end)
 
 dap.adapters.coreclr = {
     type='executable',
-    command = '/home/algoth/.local/share/nvim/mason/bin/netcoredbg',
+    command = '/home/algot/.local/share/nvim/mason/bin/netcoredbg',
     args = { '--interpreter=vscode' },
 }
 
