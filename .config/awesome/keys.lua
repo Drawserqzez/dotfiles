@@ -25,6 +25,8 @@ keys.globalkeys = gears.table.join(
         }
     ),
 
+
+
     awful.key({ modkey }, 't',
         function()
             awful.spawn(apps.terminal)
@@ -41,6 +43,16 @@ keys.globalkeys = gears.table.join(
         end,
         {
             description = 'open browser',
+            group = 'launcher'
+        }
+    ),
+
+    awful.key({ modkey }, 'w',
+        function()
+            awful.spawn(apps.appmenu)
+        end,
+        {
+            description = 'open appmenu',
             group = 'launcher'
         }
     ),
@@ -282,7 +294,6 @@ for i = 1, 9 do
             }
         ),
 
-
         awful.key({ modkey, 'Shift' }, '#' .. i + 9,
             function()
                 if client.focus then
@@ -342,7 +353,7 @@ keys.clientkeys = gears.table.join(
         }
     ),
 
-    awful.key({ modkey, 'Control' }, 'Space',
+    awful.key({ modkey, 'Control' }, 'space',
         awful.client.floating.toggle,
         {
             description = 'toggle floating',

@@ -27,7 +27,7 @@ root.keys(keys.globalkeys)
 
 require('components.exit-screen')
 
--- local battery_widget = require('widgets.battery')
+local battery_widget = require('widgets.battery')
 local spotify_widget = require('widgets.spotify')
 
 local volume_widget = require('widgets.volume')
@@ -261,14 +261,13 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             {
-                -- battery,
                 shape = gears.shape.rounded_bar,
                 shape_border_width = 100,
                 bg = '#293039',
                 widget = wibox.container.background
             },
             volume_widget,
-            -- battery_widget,
+            battery_widget,
             mytextclock,
             s.mylayoutbox,
         },
@@ -401,6 +400,7 @@ awful.rules.rules = {
           "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
           "pinentry",
+          "pop"
         },
         class = {
           "Arandr",
@@ -413,7 +413,8 @@ awful.rules.rules = {
           "Wpa_gui",
           "veromix",
           "xtightvncviewer",
-          "pop"
+          -- "pop",
+          -- "Pop"
         },
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client

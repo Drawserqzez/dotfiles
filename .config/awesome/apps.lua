@@ -10,7 +10,8 @@ apps.default = {
     screenshot = 'flameshot gui',
     filebrowser = 'nautilus',
     browser = 'firefox',
-    editor = 'nvim'
+    editor = 'nvim',
+    appmenu = 'rofi -modi window -show window -show-icons -width 22'
 }
 
 local runOnStartup = {
