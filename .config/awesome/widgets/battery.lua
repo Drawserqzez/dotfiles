@@ -50,6 +50,14 @@ local function update_battery_status(widget, battery_status)
     local text = ''
     if battery_status.is_charging then
         text = '󱐋'
+    elseif battery_status.is_full then
+        text = '󰁹'
+    elseif battery_status.charge_level > 75 then
+        text = '󱊣'
+    elseif battery_status.charge_level > 35 then
+        text = '󱊢'
+    else
+        text = '󱊡'
     end
 
     text_widget:set_text(text)
@@ -74,7 +82,15 @@ awful.widget.watch('acpi', 60,
         if status and percentage then
             print(percentage)
             local is_charging = (status:find("Charging") ~= nil)
-            update_battery_status(callback_widget, { is_charging = is_charging, charge_level = tonumber(percentage:sub(1, -2)) })
+            local is_full = (status:find("Full") ~= nil)
+
+            local battery_data = {
+                is_full = is_full,
+                is_charging = is_charging,
+                charge_level = tonumber(percentage:sub(1, -2))
+            }
+
+            update_battery_status(callback_widget, battery_data)
 
             charge = percentage
             if is_charging then
