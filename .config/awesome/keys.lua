@@ -353,6 +353,16 @@ keys.clientkeys = gears.table.join(
         }
     ),
 
+    awful.key({ modkey }, 'n',
+        function (c)
+            c.minimized = true
+        end,
+        {
+            description = 'minimise',
+            group = 'client'
+        }
+    ),
+
     awful.key({ modkey, 'Control' }, 'space',
         awful.client.floating.toggle,
         {
