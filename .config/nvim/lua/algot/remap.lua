@@ -8,11 +8,6 @@ map('v', 'ö', '^', { noremap = true })
 map('n', 'ä', '$', { noremap = true })
 map('v', 'ä', '$', { noremap = true })
 
--- map('n', 'J', '5j', { noremap = true })
--- map('n', 'K', '5k', { noremap = true })
--- map('n', 'H', '10h', { noremap = true })
--- map('n', 'L', '10l', { noremap = true })
-
 map('n', '<C-d>', '<C-d>zz', { noremap = true })
 map('n', '<C-u>', '<C-u>zz', { noremap = true })
 
@@ -20,8 +15,6 @@ map('n', '<leader>s', vim.cmd.sp)
 map('n', '<leader>v', vim.cmd.vsp)
 
 map('n', 'gs', '<C-w>', { noremap = true })
-map('n', '+', '<C-w>+')
-map('n', '-', '<C-w>-')
 
 map('t', 'jkl', '<C-\\><C-n>')
 
