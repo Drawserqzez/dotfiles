@@ -32,7 +32,7 @@ local progress_widget = wibox.widget {
     forced_height = 24,
     forced_width = 24,
     rounded_edge = true,
-    colors = { '#ffffee', '#00ff00' },
+    colors = { '#ffffff55', '#00ff00' },
     paddings = 2,
 }
 

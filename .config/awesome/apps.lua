@@ -11,7 +11,8 @@ apps.default = {
     filebrowser = 'nautilus',
     browser = 'firefox',
     editor = 'nvim',
-    appmenu = 'rofi -modi window -show window -show-icons -width 22'
+    appmenu = 'rofi -modi window -show window -show-icons -width 22',
+    zen = 'flatpak run app.zen_browser.zen',
 }
 
 local runOnStartup = {

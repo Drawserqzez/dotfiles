@@ -25,8 +25,6 @@ keys.globalkeys = gears.table.join(
         }
     ),
 
-
-
     awful.key({ modkey }, 't',
         function()
             awful.spawn(apps.terminal)
@@ -43,6 +41,16 @@ keys.globalkeys = gears.table.join(
         end,
         {
             description = 'open browser',
+            group = 'launcher'
+        }
+    ),
+
+    awful.key({ modkey }, 'z',
+        function()
+            awful.spawn(apps.zen)
+        end,
+        {
+            description = 'open zen',
             group = 'launcher'
         }
     ),
