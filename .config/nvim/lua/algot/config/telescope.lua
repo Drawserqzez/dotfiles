@@ -35,6 +35,7 @@ telescope.setup {
 telescope.load_extension("file_browser")
 telescope.load_extension('ui-select')
 telescope.load_extension('undo')
+telescope.load_extension('harpoon')
 
 vim.keymap.set('n', '<leader>nn', ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 vim.keymap.set('n', '<leader>nw', ":Telescope file_browser<CR>")
