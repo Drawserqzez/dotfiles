@@ -47,7 +47,7 @@ lspconfig.emmet_ls.setup({
 })
 
 lspconfig.volar.setup {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    filetypes = {'vue' },
     init_options = {
         vue = {
             hybridMode = false
@@ -56,6 +56,7 @@ lspconfig.volar.setup {
 }
 
 lspconfig.ts_ls.setup {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', },
     init_options = {
         plugins = {
             {
