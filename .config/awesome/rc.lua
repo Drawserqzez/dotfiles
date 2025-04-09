@@ -34,6 +34,7 @@ local volume_widget = require('widgets.volume')
 
 awful.spawn.with_shell("killall nm-applet")
 awful.spawn.with_shell("killall blueman-applet")
+awful.spawn.with_shell("killall xfce4-power-manager")
 
 local apps = require('apps')
 apps.autostart()
@@ -509,4 +510,5 @@ collectgarbage("setstepmul", 1000)
 
 awful.spawn.with_shell("blueman-applet")
 awful.spawn.with_shell("nm-applet")
+awful.spawn.with_shell("xfce4-power-manager")
 awful.spawn.with_shell('autorandr -c')
