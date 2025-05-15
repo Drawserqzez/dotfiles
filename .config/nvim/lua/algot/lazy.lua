@@ -140,35 +140,40 @@ require('lazy').setup {
     },
 
     -- buffers and powerline
+    -- {
+    --     'akinsho/bufferline.nvim',
+    --     event = 'ColorScheme',
+    --     version = '*',
+    --     config = function()
+    --         require('algot.config.bufferline')
+    --     end,
+    --     dependencies = {
+    --         'nvim-tree/nvim-web-devicons'
+    --     },
+    -- },
+    -- {
+    --     'nvim-lualine/lualine.nvim',
+    --     event = 'ColorScheme',
+    --     config = function()
+    --         require('algot.config.lualine')
+    --     end,
+    --     dependencies = {
+    --         'nvim-tree/nvim-web-devicons'
+    --     }
+    -- },
+
     {
-        'akinsho/bufferline.nvim',
-        event = 'ColorScheme',
-        version = '*',
+        'rebelot/heirline.nvim',
+        event = 'UiEnter',
         config = function()
-            require('algot.config.bufferline')
+            require('algot.config.heirline.base')
         end,
         dependencies = {
-            'nvim-tree/nvim-web-devicons'
-        },
-    },
-    {
-        'nvim-lualine/lualine.nvim',
-        event = 'ColorScheme',
-        config = function()
-            require('algot.config.lualine')
-        end,
-        dependencies = {
-            'nvim-tree/nvim-web-devicons'
+            'rebelot/kanagawa.nvim',
+            'nvim-tree/nvim-web-devicons',
+            'lewis6991/gitsigns.nvim',
         }
     },
-
-    -- {
-    --     'rebelot/heirline.nvim',
-    --     event = 'UiEnter',
-    --     config = function()
-    --         require('algot.config.heirline')
-    --     end,
-    -- },
 
     -- navigation
     {

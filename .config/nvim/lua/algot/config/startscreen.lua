@@ -1,5 +1,6 @@
 local alpha = require('alpha')
 local dash = require('alpha.themes.dashboard')
+local logo = require('algot.logo').get_logo()
 
 math.randomseed(os.time())
 
@@ -17,7 +18,7 @@ local function footer()
     return datetime .. nvim_version_info --"   " .. total_plugins .. " plugins" .. nvim_version_info
 end
 
-dash.section.header.val = get_logo()
+dash.section.header.val = logo
 dash.section.header.opts = { hl = pick_colour(), position = 'center' }
 
 dash.section.buttons.val = {

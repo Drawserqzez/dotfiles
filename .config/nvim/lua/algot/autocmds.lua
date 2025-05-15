@@ -73,3 +73,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI'}, {
+    group = augroup('auto_read'),
+    pattern = "*",
+    callback = function()
+        if vim.fn.mode() ~= 'c' then
+            vim.cmd('checktime')
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+    group = augroup('auto_read'),
+    pattern = '*',
+    callback = function()
+        vim.notify('File changed on disk, buffer reloaded.', vim.log.levels.INFO, { title = 'File change notificaton' })
+    end,
+})
+

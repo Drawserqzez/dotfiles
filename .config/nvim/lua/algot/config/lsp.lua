@@ -47,30 +47,77 @@ lspconfig.emmet_ls.setup({
 })
 
 lspconfig.volar.setup {
-    filetypes = {'vue' },
+    filetypes = { 'vue' },
     init_options = {
         vue = {
             hybridMode = false
         }
-    }
+    },
+    --     -- settings = {
+    --     --     typescript = {
+    --     --         inlayHints = {
+    --     --             enumMemberValues = {
+    --     --                 enabled = true,
+    --     --             },
+    --     --             functionLikeReturnTypes = {
+    --     --                 enabled = true,
+    --     --             },
+    --     --             propertyDeclarationTypes = {
+    --     --                 enabled = true,
+    --     --             },
+    --     --             parameterTypes = {
+    --     --                 enabled = true,
+    --     --                 suppressWhenArgumentMatchesName = true,
+    --     --             },
+    --     --             variableTypes = {
+    --     --                 enabled = true,
+    --     --             },
+    --     --         },
+    --     --     },
+    --     -- },
 }
 
 lspconfig.ts_ls.setup {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', },
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     init_options = {
         plugins = {
             {
                 name = '@vue/typescript-plugin',
-                location = require('mason-registry').get_package('vue-language-server'):get_install_path(),
+                location = require('mason-registry').get_package('vue-language-server'):get_install_path()
+                    .. '/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin',
                 languages = { 'vue' },
             }
         }
-    }
+    },
+    -- settings = {
+    --     typescript = {
+    --         tsserver = {
+    --             useSyntaxServer = false,
+    --         },
+    --         inlayHints = {
+    --             includeInlayParameterNameHints = 'all',
+    --             includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+    --             includeInlayFunctionParameterTypeHints = true,
+    --             includeInlayVariableTypeHints = true,
+    --             includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+    --             includeInlayPropertyDeclarationTypeHints = true,
+    --             includeInlayFunctionLikeReturnTypeHints = true,
+    --             includeInlayEnumMemberValueHints = true,
+    --         },
+    --     },
+    -- },
 }
 
-lspconfig.biome.setup({
-    filetypes = { 'json' },
-})
+-- doesn't work to only use for json :(
+-- lspconfig.biome.setup({
+--     cmd = { 'biome', 'lsp-proxy' },
+--     filetypes = {
+--         'json',
+--         'jsonc',
+--     },
+--     single_file_support = true,
+--     workspace_required = false,
+-- })
 
 local cmp = require('cmp')
 local lspkind = require('lspkind')
