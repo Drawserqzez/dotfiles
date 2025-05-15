@@ -135,14 +135,16 @@ awesome.connect_signal('show_exit_screen',
 local screen_geometry = awful.screen.focused().geometry
 
 exit_screen.widget = wibox({
-    x = screen_geometry.x,
-    y = screen_geometry.y,
+    x = screen_geometry.x + ((screen_geometry.width - 900) / 2),
+    y = screen_geometry.y + ((screen_geometry.height - 300) / 2),
     visible = false,
     ontop = true,
     type = 'splash',
-    height = screen_geometry.height,
-    width = screen_geometry.width,
-    bg = '#333333'
+    height = dpi(300),
+    width = dpi(900),
+    bg = '#333333DD',
+    fg = '#FEDFED',
+    border_color = '#DEFFC2'
 })
 
 function exit_screen.hide()
