@@ -28,10 +28,6 @@ require('noice').setup({
             },
             opts = { skip = true },
         },
-        {
-            view = "notify",
-            filter = { event = "msg_showmode" },
-        },
     },
 })
 
