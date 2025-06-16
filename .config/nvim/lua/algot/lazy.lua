@@ -172,6 +172,7 @@ require('lazy').setup {
             'rebelot/kanagawa.nvim',
             'nvim-tree/nvim-web-devicons',
             'lewis6991/gitsigns.nvim',
+            'mfussenegger/nvim-dap',
         }
     },
 

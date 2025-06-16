@@ -32,3 +32,14 @@ vim.opt.colorcolumn = '80'
 vim.wo.relativenumber = true;
 
 vim.o.autoread = true
+
+vim.diagnostic.config({
+ signs = {
+   text = {
+     [vim.diagnostic.severity.ERROR] = ' ',
+     [vim.diagnostic.severity.WARN] = ' ',
+     [vim.diagnostic.severity.INFO] = '󰋇 ',
+     [vim.diagnostic.severity.HINT] = '󰌵',
+   },
+ },
+})
