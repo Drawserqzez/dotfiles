@@ -14,6 +14,10 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
+local ruled = require('ruled')
+
+-- local ruled_notifications = require('ruled.notifications')
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -493,6 +497,20 @@ client.connect_signal("request::titlebars", function(c)
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
+    }
+end)
+
+ruled.notification.connect_signal('request::rules', function()
+    -- All notifications will match this rule.
+    ruled.notification.append_rule {
+        rule = { },
+        properties = {
+            -- screen = awful.screen.preferred,
+            implicit_timeout = 5,
+            -- shape = gears.shape.rounded_rect,
+            -- forced_width = 400,
+            -- forced_height = 120,
+        }
     }
 end)
 
