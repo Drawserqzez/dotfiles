@@ -20,7 +20,7 @@ harpoon:setup()
 --     }):find()
 -- end
 
-vim.keymap.set('n', '<leader>a', function()
+vim.keymap.set('n', '<leader>fa', function()
     harpoon:list():add()
 end)
 
@@ -30,5 +30,5 @@ harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
 
 -- vim.keymap.set('n', '<leader>p', function() toggle_telescope(harpoon:list()) end,
     -- { desc = 'Open harpoon window' })
-vim.keymap.set('n', '<leader>p', ":Telescope harpoon marks<CR>", { desc = 'Open harpoon window' })
+vim.keymap.set('n', '<leader>fh', ":Telescope harpoon marks<CR>", { desc = 'Open harpoon window' })
 

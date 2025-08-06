@@ -21,7 +21,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'emmet_ls', 'volar', 'ts_ls', 'omnisharp', 'biome' },
+    ensure_installed = { 'emmet_ls', 'volar', 'ts_ls', 'omnisharp' },
     handlers = {
         lsp.default_setup,
         lua_ls = function()
@@ -107,17 +107,6 @@ lspconfig.ts_ls.setup {
     --     },
     -- },
 }
-
--- doesn't work to only use for json :(
--- lspconfig.biome.setup({
---     cmd = { 'biome', 'lsp-proxy' },
---     filetypes = {
---         'json',
---         'jsonc',
---     },
---     single_file_support = true,
---     workspace_required = false,
--- })
 
 local cmp = require('cmp')
 local types = require('cmp.types')

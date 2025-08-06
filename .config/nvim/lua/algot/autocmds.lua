@@ -49,8 +49,8 @@ vim.api.nvim_create_autocmd('FileType', {
         'dap-float',
     },
     callback = function(event)
-        vim.bo[event.buf].buflisted = false,
-        vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+        vim.bo[event.buf].buflisted = false
+        vim.keymap.set('n', 'q', vim.cmd.close, { buffer = event.buf, silent = true })
     end,
 })
 
@@ -69,6 +69,36 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if client.server_capabilities.inlayHintProvider then
             vim.lsp.inlay_hint.enable(true, {})
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+    group = augroup('autoformat_on_write'),
+    pattern = "*.cs",
+    callback = function(event)
+        local client_name = 'omnisharp'
+        local clients = vim.lsp.get_clients({ buffer = event.buf })
+
+        for _, client in ipairs(clients) do
+            if client.name == client_name then
+                vim.lsp.buf.format({ bufnr = event.buf, async = false })
+            end
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    group = augroup('referencer_refresher'),
+    pattern = "*",
+    callback = function(event)
+        local client_name = 'omnisharp'
+        local clients = vim.lsp.get_clients({ buffer = event.buf })
+
+        for _, client in ipairs(clients) do
+            if client.name == client_name then
+                vim.cmd('ReferencerUpdate')
+            end
         end
     end,
 })

@@ -76,9 +76,20 @@ require('lazy').setup {
         'kylechui/nvim-surround',
         version = '*',
         event = 'VeryLazy',
-        config = function ()
+        config = function()
             require('algot.config.surround')
         end
+    },
+
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        config = function()
+            require('algot.config.markdown')
+        end,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-tree/nvim-web-devicons'
+        }
     },
 
     -- lsp stuff
@@ -137,6 +148,16 @@ require('lazy').setup {
         config = function()
             require('algot.config.neotest')
         end,
+    },
+
+    {
+        'romus204/referencer.nvim',
+        config = function()
+            require('algot.config.codelens')
+        end,
+        dependencies = {
+            'VonHeikemen/lsp-zero.nvim',
+        }
     },
 
     -- buffers and powerline
@@ -321,9 +342,9 @@ require('lazy').setup {
     --     config = function()
     --         require('algot.config.copilot.cmp')
     --     end,
-    --     dependencies = { 
+    --     dependencies = {
     --         'hrsh7th/nvim-cmp',
-    --         'zbirenbaum/copilot.lua' 
+    --         'zbirenbaum/copilot.lua'
     --     },
     -- },
     -- {
@@ -339,4 +360,3 @@ require('lazy').setup {
     --     }
     -- },
 }
-
