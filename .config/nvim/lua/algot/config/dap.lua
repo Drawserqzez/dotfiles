@@ -109,7 +109,7 @@ vim.keymap.set('n', '<leader>db', function() dotnet_build() end)
 
 dap.adapters.coreclr = {
     type='executable',
-    command = require('mason-registry').get_package('netcoredbg'):get_install_path() .. '/netcoredbg',
+    command = vim.fn.expand('$MASON/packages/netcoredbg/netcoredbg'),
     args = { '--interpreter=vscode' },
 }
 

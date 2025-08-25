@@ -21,7 +21,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'emmet_ls', 'volar', 'ts_ls', 'omnisharp' },
+    ensure_installed = { 'emmet_ls', 'vue-language-server', 'ts_ls', 'omnisharp' },
     handlers = {
         lsp.default_setup,
         lua_ls = function()
@@ -83,8 +83,7 @@ lspconfig.ts_ls.setup {
         plugins = {
             {
                 name = '@vue/typescript-plugin',
-                location = require('mason-registry').get_package('vue-language-server'):get_install_path()
-                    .. '/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin',
+                location = vim.fn.expand('$MASON/packages/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin'),
                 languages = { 'vue' },
             }
         }
