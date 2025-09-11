@@ -109,7 +109,8 @@ vim.keymap.set('n', '<leader>db', function() dotnet_build() end)
 
 dap.adapters.coreclr = {
     type='executable',
-    command = vim.fn.expand('$MASON/packages/netcoredbg/netcoredbg'),
+    -- command = vim.fn.expand('$MASON/packages/netcoredbg/') .. 'netcoredbg',
+    command = 'netcoredbg',
     args = { '--interpreter=vscode' },
 }
 

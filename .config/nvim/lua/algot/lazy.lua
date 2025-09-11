@@ -94,14 +94,12 @@ require('lazy').setup {
 
     -- lsp stuff
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
+        'neovim/nvim-lspconfig',
         config = function()
             require('algot.config.lsp')
         end,
         dependencies = {
             -- lspconfig
-            'neovim/nvim-lspconfig',
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
 
@@ -109,24 +107,27 @@ require('lazy').setup {
             'hrsh7th/nvim-cmp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
-
-            -- Snippets
+            'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
-            'rafamadriz/friendly-snippets',
         }
     },
+    -- {
+    --     'VonHeikemen/lsp-zero.nvim',
+    --     branch = 'v3.x',
+    --     config = function()
+    --         require('algot.config.lsp')
+    --     end,
+    --     dependencies = {
+    --     }
+    -- },
     {
         'mfussenegger/nvim-dap',
         config = function()
             require('algot.config.dap')
         end,
         event = 'VeryLazy'
-    },
-    {
-        'onsails/lspkind.nvim'
     },
     {
         'rmagatti/goto-preview',
@@ -150,15 +151,15 @@ require('lazy').setup {
         end,
     },
 
-    {
-        'romus204/referencer.nvim',
-        config = function()
-            require('algot.config.codelens')
-        end,
-        dependencies = {
-            'VonHeikemen/lsp-zero.nvim',
-        }
-    },
+    -- {
+    --     'romus204/referencer.nvim',
+    --     config = function()
+    --         require('algot.config.codelens')
+    --     end,
+    --     dependencies = {
+    --         'neovim/nvim-lspconfig',
+    --     }
+    -- },
 
     -- buffers and powerline
     -- {

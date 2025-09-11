@@ -73,20 +73,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-    group = augroup('autoformat_on_write'),
-    pattern = "*.cs",
-    callback = function(event)
-        local client_name = 'omnisharp'
-        local clients = vim.lsp.get_clients({ buffer = event.buf })
-
-        for _, client in ipairs(clients) do
-            if client.name == client_name then
-                vim.lsp.buf.format({ bufnr = event.buf, async = false })
-            end
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--     group = augroup('autoformat_on_write'),
+--     pattern = "*.cs",
+--     callback = function(event)
+--         local client_name = 'omnisharp'
+--         local clients = vim.lsp.get_clients({ buffer = event.buf })
+--
+--         for _, client in ipairs(clients) do
+--             if client.name == client_name then
+--                 vim.lsp.buf.format({ bufnr = event.buf, async = false })
+--             end
+--         end
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd('BufWritePost', {
     group = augroup('referencer_refresher'),
