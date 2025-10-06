@@ -12,11 +12,12 @@ apps.default = {
     browser = 'firefox',
     editor = 'nvim',
     appmenu = 'rofi -modi window -show window -show-icons -width 22',
-    zen = 'flatpak run app.zen_browser.zen',
+    zen = 'zen',
 }
 
 local runOnStartup = {
-    'picom'
+    'picom',
+    'lxpolkit'
 }
 
 function apps.autostart()

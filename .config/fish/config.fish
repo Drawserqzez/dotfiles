@@ -15,6 +15,7 @@ fish_add_path ~/.cargo/bin/
 # fzf.fish keybinds
 if type -q fisher
     fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp
+    set fzf_history_time_format "%d.%m.%Y %H:%M:%S"
 end
 
 function starship_transient_rprompt_func
@@ -30,3 +31,8 @@ if type -q starship
     # enable_transience
 end
 
+set -Ux EDITOR nvim
+
+set -Ux DOTNET_ROOT /home/algot/.dotnet/
+
+# ssh-add ~/.ssh/gh_work ~/.ssh/gh_personal

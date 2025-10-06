@@ -405,7 +405,8 @@ awful.rules.rules = {
           "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
           "pinentry",
-          "pop"
+          "pop",
+          "Tuple"
         },
         class = {
           "Arandr",
