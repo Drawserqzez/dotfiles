@@ -88,20 +88,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --     end,
 -- })
 
-vim.api.nvim_create_autocmd('BufWritePost', {
-    group = augroup('referencer_refresher'),
-    pattern = "*",
-    callback = function(event)
-        local client_name = 'omnisharp'
-        local clients = vim.lsp.get_clients({ buffer = event.buf })
-
-        for _, client in ipairs(clients) do
-            if client.name == client_name then
-                vim.cmd('ReferencerUpdate')
-            end
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd('BufWritePost', {
+--     group = augroup('referencer_refresher'),
+--     pattern = "*",
+--     callback = function(event)
+--         local client_name = 'omnisharp'
+--         local clients = vim.lsp.get_clients({ buffer = event.buf })
+--
+--         for _, client in ipairs(clients) do
+--             if client.name == client_name then
+--                 vim.cmd('ReferencerUpdate')
+--             end
+--         end
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI'}, {
     group = augroup('auto_read'),

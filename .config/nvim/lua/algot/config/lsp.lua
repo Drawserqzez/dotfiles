@@ -66,8 +66,6 @@ vim.lsp.config('tailwindcss', {
     },
 })
 
-vim.lsp.log.set_level(vim.log.levels.DEBUG)
-
 
 require('mason-lspconfig').setup({
     ensure_installed = { 'emmet_ls', 'vue_ls', 'vtsls', 'omnisharp', 'lua_ls', 'tailwindcss' },
